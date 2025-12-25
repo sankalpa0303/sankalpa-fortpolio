@@ -538,6 +538,63 @@
         text-align: center;
       }
 
+      .nav-socials {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin-left: 1.5rem;
+      }
+
+      .nav-socials a {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 10px 25px rgba(5, 8, 20, 0.4);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      }
+
+      .nav-socials a:hover {
+        transform: translateY(-3px);
+        background: rgba(255, 255, 255, 0.18);
+        box-shadow: 0 16px 30px rgba(5, 8, 20, 0.55);
+      }
+
+      .nav-socials-mobile {
+        display: none;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-socials-mobile a {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.65rem 0;
+        border-radius: 14px;
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 1.05rem;
+        transition: background 0.25s ease, transform 0.25s ease;
+      }
+
+      .nav-socials-mobile a:hover {
+        background: rgba(255, 255, 255, 0.16);
+        transform: translateY(-2px);
+      }
+
       .social-links {
         flex-wrap: wrap;
         gap: 0.75rem;
@@ -584,6 +641,15 @@
 
         .nav-right {
           gap: 0.75rem;
+        }
+
+        .nav-socials {
+          display: none;
+        }
+
+        .nav-socials-mobile {
+          display: flex;
+          margin-top: auto;
         }
 
         .hero {
@@ -730,6 +796,27 @@
         <div class="logo text-2xl font-bold text-gradient tracking-wide">
           Pasindu Sankalpa Basnayaka
         </div>
+
+        <div class="nav-socials-mobile">
+          <a
+            href="https://www.linkedin.com/in/pasindu-basnayaka"
+            aria-label="LinkedIn profile"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a
+            href="https://github.com/sankalpa0303"
+            aria-label="GitHub profile"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="https://wa.me/94759307606"
+            aria-label="WhatsApp contact"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
       </div>
 
       <div class="nav-right flex items-center">
@@ -754,6 +841,27 @@
         >
           <i class="fas fa-moon"></i>
         </button>
+
+        <div class="nav-socials hidden lg:flex">
+          <a
+            href="https://www.linkedin.com/in/pasindu-basnayaka"
+            aria-label="LinkedIn profile"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a
+            href="https://github.com/sankalpa0303"
+            aria-label="GitHub profile"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="https://wa.me/94759307606"
+            aria-label="WhatsApp contact"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
 
         <div
           class="hamburger md:hidden flex flex-col cursor-pointer ml-4 gap-1.5"
@@ -841,6 +949,7 @@
             Contact Me
           </a>
         </div>
+
       </div>
     </section>
 
@@ -1938,7 +2047,7 @@
 
             <div class="flex gap-3 pt-3 border-t border-white/5">
               <a
-                href="#"
+                href="https://github.com/sankalpa0303/Manage-stock.git"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
               >
                 <i class="fab fa-github mr-1"></i> Code
@@ -2002,7 +2111,7 @@
 
             <div class="flex gap-3 pt-3 border-t border-white/5">
               <a
-                href="#"
+                href=""
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
               >
                 <i class="fab fa-github mr-1"></i> Code
@@ -2065,7 +2174,7 @@
 
             <div class="flex gap-3 pt-3 border-t border-white/5">
               <a
-                href="#"
+                href="https://github.com/ravindu-sliit/RiyaGuru.git"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
               >
                 <i class="fab fa-github mr-1"></i> Code
@@ -2129,7 +2238,7 @@
 
             <div class="flex gap-3 pt-3 border-t border-white/5">
               <a
-                href="#"
+                href="https://github.com/sankalpa0303/Edusity.git"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
               >
                 <i class="fab fa-github mr-1"></i> Code
@@ -2193,7 +2302,7 @@
 
             <div class="flex gap-3 pt-3 border-t border-white/5">
               <a
-                href="#"
+                href="https://github.com/sankalpa0303/VitalEase.git"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
               >
                 <i class="fab fa-github mr-1"></i> Code
@@ -2318,7 +2427,7 @@
 
             <div class="flex gap-3 pt-3 border-t border-white/5">
               <a
-                href="#"
+                href="https://www.figma.com/proto/HJ2kVXXFLMpz1Zgi1jR535/Home-servise?node-id=115-939&t=gYbOgtk4NQNSxTwS-1&starting-point-node-id=115%3A939"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
               >
                 <i class="fab fa-figma mr-1"></i> Design
@@ -2382,7 +2491,7 @@
 
             <div class="flex gap-3 pt-3 border-t border-white/5">
               <a
-                href="#"
+                href="https://www.figma.com/proto/Dyc9YSJ95swGRLwtB1GNGp/Untitled?node-id=109-98&t=dCvTRt3wNiQqWLOB-1&starting-point-node-id=109%3A98"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
               >
                 <i class="fab fa-figma mr-1"></i> Design
@@ -2398,9 +2507,9 @@
         </div>
 
         <!-- Project 9 - AI Chat Bot II -->
-        <div
+        <!-- <div
           class="glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
-        >
+          >
           <div
             class="h-48 bg-gradient-to-br from-amber-500/20 to-yellow-500/20 flex items-center justify-center"
           >
@@ -2459,7 +2568,7 @@
               </a>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -3025,6 +3134,12 @@
             retina_detect: true,
           });
         }
+      });
+
+      // Force all links to open in a new tab for consistent UX
+      document.querySelectorAll("a[href]").forEach((anchor) => {
+        anchor.setAttribute("target", "_blank");
+        anchor.setAttribute("rel", "noopener noreferrer");
       });
 
       // Console Messages
