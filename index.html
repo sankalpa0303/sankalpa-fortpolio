@@ -294,6 +294,87 @@
         backdrop-filter: blur(12px);
       }
 
+      .project-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .project-card .project-cover {
+        width: 100%;
+        height: 12.5rem;
+        flex-shrink: 0;
+        overflow: hidden;
+      }
+
+      .project-card .project-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .project-card .project-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+      }
+
+      .project-card .project-links {
+        margin-top: auto;
+      }
+
+      .reveal-card {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1),
+          opacity 1.2s ease;
+      }
+
+      .reveal-card.reveal-from-left {
+        transform: translateX(-80px);
+      }
+
+      .reveal-card.reveal-from-right {
+        transform: translateX(80px);
+      }
+
+      .reveal-card.in-view {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+
+      .contact-info,
+      .contact-form {
+        background: rgba(9, 12, 32, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .contact-info:hover,
+      .contact-form:hover {
+        background: rgba(9, 12, 32, 0.35);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+        width: 100%;
+        align-items: stretch;
+        grid-auto-rows: 1fr;
+      }
+
+      @media (min-width: 1024px) {
+        .projects-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
       .text-gradient {
         background: var(--gradient-1);
         -webkit-background-clip: text;
@@ -1481,13 +1562,13 @@
                       and ML Engineer Programme offered by SLIIT
                     </h4>
                     <p class="text-gray-400 text-xs mb-2">SLIIT | 2025</p>
-                     <a
+                    <a
                       href="./assets/Sankalpa Basnayaka - 2026-01-08.pdf"
                       target="_blank"
                       class="text-blue-400 text-xs hover:underline flex items-center"
                     >
                       <i class="far fa-eye mr-1 text-xs"></i> View Certificate
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -1935,21 +2016,20 @@
         ></span>
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="projects-grid">
         <!-- Project 1 -->
         <div
-          class="glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
+          class="project-card glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
         >
           <div
-            class="h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center"
+            class="project-cover h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center"
           >
             <img
               src="/images/school.png"
               alt="School Management System"
-              class="w-full h-full object-cover"
             />
           </div>
-          <div class="p-6">
+          <div class="project-body p-6">
             <div class="flex items-center gap-3 mb-4">
               <div class="bg-blue-500/20 p-3 rounded-xl">
                 <i class="fas fa-globe text-blue-400 text-xl"></i>
@@ -1983,7 +2063,7 @@
               >
             </div>
 
-            <div class="flex gap-3 pt-3 border-t border-white/5">
+            <div class="project-links flex gap-3 pt-3 border-t border-white/5">
               <a
                 href="#"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
@@ -2002,18 +2082,17 @@
 
         <!-- Project 2 -->
         <div
-          class="glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
+          class="project-card glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
         >
           <div
-            class="h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center"
+            class="project-cover h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center"
           >
             <img
               src="/images/inventory2.png"
               alt="Inventory Management System"
-              class="w-full h-full object-cover"
             />
           </div>
-          <div class="p-6">
+          <div class="project-body p-6">
             <div class="flex items-center gap-3 mb-4">
               <div class="bg-purple-500/20 p-3 rounded-xl">
                 <i class="fab fa-java text-purple-400 text-xl"></i>
@@ -2047,7 +2126,7 @@
               >
             </div>
 
-            <div class="flex gap-3 pt-3 border-t border-white/5">
+            <div class="project-links flex gap-3 pt-3 border-t border-white/5">
               <a
                 href="https://github.com/sankalpa0303/Manage-stock.git"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
@@ -2066,18 +2145,17 @@
 
         <!-- Project 3 - Hotel Management -->
         <div
-          class="glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
+          class="project-card glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
         >
           <div
-            class="h-48 bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center"
+            class="project-cover h-48 bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center"
           >
             <img
               src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop"
               alt="Hotel Management System"
-              class="w-full h-full object-cover"
             />
           </div>
-          <div class="p-6">
+          <div class="project-body p-6">
             <div class="flex items-center gap-3 mb-4">
               <div class="bg-purple-500/20 p-3 rounded-xl">
                 <i class="fab fa-java text-purple-400 text-xl"></i>
@@ -2111,7 +2189,7 @@
               >
             </div>
 
-            <div class="flex gap-3 pt-3 border-t border-white/5">
+            <div class="project-links flex gap-3 pt-3 border-t border-white/5">
               <a
                 href=""
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
@@ -2130,18 +2208,17 @@
 
         <!-- Project 4 - Driving School -->
         <div
-          class="glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
+          class="project-card glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
         >
           <div
-            class="h-48 bg-gradient-to-br from-green-500/20 to-teal-500/20 flex items-center justify-center"
+            class="project-cover h-48 bg-gradient-to-br from-green-500/20 to-teal-500/20 flex items-center justify-center"
           >
             <img
               src="/images/driving.png"
               alt="Driving School Management"
-              class="w-full h-full object-cover"
             />
           </div>
-          <div class="p-6">
+          <div class="project-body p-6">
             <div class="flex items-center gap-3 mb-4">
               <div class="bg-green-500/20 p-3 rounded-xl">
                 <i class="fab fa-react text-green-400 text-xl"></i>
@@ -2174,7 +2251,7 @@
               >
             </div>
 
-            <div class="flex gap-3 pt-3 border-t border-white/5">
+            <div class="project-links flex gap-3 pt-3 border-t border-white/5">
               <a
                 href="https://github.com/ravindu-sliit/RiyaGuru.git"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
@@ -2193,18 +2270,17 @@
 
         <!-- Project 5 - University Management -->
         <div
-          class="glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
+          class="project-card glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
         >
           <div
-            class="h-48 bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center"
+            class="project-cover h-48 bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center"
           >
             <img
               src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop"
               alt="University Management"
-              class="w-full h-full object-cover"
             />
           </div>
-          <div class="p-6">
+          <div class="project-body p-6">
             <div class="flex items-center gap-3 mb-4">
               <div class="bg-pink-500/20 p-3 rounded-xl">
                 <i class="fab fa-react text-pink-400 text-xl"></i>
@@ -2238,7 +2314,7 @@
               >
             </div>
 
-            <div class="flex gap-3 pt-3 border-t border-white/5">
+            <div class="project-links flex gap-3 pt-3 border-t border-white/5">
               <a
                 href="https://github.com/sankalpa0303/Edusity.git"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
@@ -2257,18 +2333,17 @@
 
         <!-- Project 6 - Habit Tracker -->
         <div
-          class="glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
+          class="project-card glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
         >
           <div
-            class="h-48 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 flex items-center justify-center"
+            class="project-cover h-48 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 flex items-center justify-center"
           >
             <img
               src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop"
               alt="Habit Tracker App"
-              class="w-full h-full object-cover"
             />
           </div>
-          <div class="p-6">
+          <div class="project-body p-6">
             <div class="flex items-center gap-3 mb-4">
               <div class="bg-orange-500/20 p-3 rounded-xl">
                 <i class="fas fa-mobile-alt text-orange-400 text-xl"></i>
@@ -2302,7 +2377,7 @@
               >
             </div>
 
-            <div class="flex gap-3 pt-3 border-t border-white/5">
+            <div class="project-links flex gap-3 pt-3 border-t border-white/5">
               <a
                 href="https://github.com/sankalpa0303/VitalEase.git"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
@@ -2321,18 +2396,17 @@
 
         <!-- Project 6 - Habit Tracker -->
         <div
-          class="glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
+          class="project-card glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
         >
           <div
-            class="h-48 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 flex items-center justify-center"
+            class="project-cover h-48 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 flex items-center justify-center"
           >
             <img
               src="/images/home2.jpg"
               alt="Habit Tracker App"
-              class="w-full h-full object-cover"
             />
           </div>
-          <div class="p-6">
+          <div class="project-body p-6">
             <div class="flex items-center gap-3 mb-4">
               <div class="bg-orange-500/20 p-3 rounded-xl">
                 <i class="fas fa-mobile-alt text-orange-400 text-xl"></i>
@@ -2364,7 +2438,7 @@
               >
             </div>
 
-            <div class="flex gap-3 pt-3 border-t border-white/5">
+            <div class="project-links flex gap-3 pt-3 border-t border-white/5">
               <a
                 href="#"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
@@ -2383,18 +2457,17 @@
 
         <!-- Project 7 - Home Service App -->
         <div
-          class="glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
+          class="project-card glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
         >
           <div
-            class="h-48 bg-gradient-to-br from-yellow-500/20 to-amber-500/20 flex items-center justify-center"
+            class="project-cover h-48 bg-gradient-to-br from-yellow-500/20 to-amber-500/20 flex items-center justify-center"
           >
             <img
               src="/images/home.jpg"
               alt="Home Service App UI"
-              class="w-full h-full object-cover"
             />
           </div>
-          <div class="p-6">
+          <div class="project-body p-6">
             <div class="flex items-center gap-3 mb-4">
               <div class="bg-yellow-500/20 p-3 rounded-xl">
                 <i class="fab fa-figma text-yellow-400 text-xl"></i>
@@ -2427,7 +2500,7 @@
               >
             </div>
 
-            <div class="flex gap-3 pt-3 border-t border-white/5">
+            <div class="project-links flex gap-3 pt-3 border-t border-white/5">
               <a
                 href="https://www.figma.com/proto/HJ2kVXXFLMpz1Zgi1jR535/Home-servise?node-id=115-939&t=gYbOgtk4NQNSxTwS-1&starting-point-node-id=115%3A939"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
@@ -2446,18 +2519,17 @@
 
         <!-- Project 8 - AI Chat Bot I -->
         <div
-          class="glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
+          class="project-card glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] hover:-translate-y-2"
         >
           <div
-            class="h-48 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center"
+            class="project-cover h-48 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center"
           >
             <img
               src="/images/bot1.png"
               alt="AI Chat Bot App UI I"
-              class="w-full h-full object-cover"
             />
           </div>
-          <div class="p-6">
+          <div class="project-body p-6">
             <div class="flex items-center gap-3 mb-4">
               <div class="bg-yellow-500/20 p-3 rounded-xl">
                 <i class="fab fa-figma text-yellow-400 text-xl"></i>
@@ -2491,7 +2563,7 @@
               >
             </div>
 
-            <div class="flex gap-3 pt-3 border-t border-white/5">
+            <div class="project-links flex gap-3 pt-3 border-t border-white/5">
               <a
                 href="https://www.figma.com/proto/Dyc9YSJ95swGRLwtB1GNGp/Untitled?node-id=109-98&t=dCvTRt3wNiQqWLOB-1&starting-point-node-id=109%3A98"
                 class="flex-1 text-center px-3 py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-medium rounded-lg border border-white/5 transition-colors"
@@ -2981,25 +3053,23 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-y-0");
-            entry.target.classList.remove("opacity-0", "translate-y-8");
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
 
-      document
-        .querySelectorAll(
-          ".about-text, .about-image, .skill-category, .experience-card, .project-card, .contact-info, .contact-form"
-        )
-        .forEach((element) => {
-          element.classList.add(
-            "opacity-0",
-            "translate-y-8",
-            "transition-all",
-            "duration-700"
-          );
-          observer.observe(element);
-        });
+      const animatedCards = document.querySelectorAll(
+        ".about-text, .about-image, .skill-category, .experience-card, .project-card, .contact-info, .contact-form"
+      );
+
+      animatedCards.forEach((element, index) => {
+        element.classList.add(
+          "reveal-card",
+          index % 2 === 0 ? "reveal-from-left" : "reveal-from-right"
+        );
+        observer.observe(element);
+      });
 
       // Smooth Scrolling
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
