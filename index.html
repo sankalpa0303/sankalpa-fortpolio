@@ -1969,77 +1969,85 @@
         <div
           class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)]"
         >
-          <div class="flex items-center gap-3 mb-6">
+          <div class="flex items-center gap-3 mb-8">
             <div class="bg-blue-500/20 p-3 rounded-xl">
               <i class="fas fa-chart-line text-blue-400 text-xl"></i>
             </div>
             <h3 class="text-xl font-semibold text-white">Data Science</h3>
           </div>
 
-          <div class="space-y-5">
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+          <div class="grid grid-cols-2 gap-6">
+            <!-- Python -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="28.27" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <defs>
+                  <linearGradient id="gradient-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fab fa-python text-blue-400 text-lg"></i>
-                  <span class="text-white text-sm"
-                    >Python (Pandas, SkLearn)</span
-                  >
+                  <span class="text-white font-medium text-sm">Python</span>
                 </div>
-                <span class="text-blue-400 text-xs font-medium">90%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                  style="width: 90%"
-                ></div>
+                <span class="text-blue-400 text-lg font-bold">90%</span>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+            <!-- SQL -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fas fa-database text-blue-400 text-lg"></i>
-                  <span class="text-white text-sm">SQL</span>
+                  <span class="text-white font-medium text-sm">SQL</span>
                 </div>
-                <span class="text-blue-400 text-xs font-medium">85%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                  style="width: 85%"
-                ></div>
+                <span class="text-blue-400 text-lg font-bold">85%</span>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+            <!-- Machine Learning -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fas fa-brain text-blue-400 text-lg"></i>
-                  <span class="text-white text-sm">Machine Learning</span>
+                  <span class="text-white font-medium text-sm">ML</span>
                 </div>
-                <span class="text-blue-400 text-xs font-medium">85%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                  style="width: 85%"
-                ></div>
+                <span class="text-blue-400 text-lg font-bold">85%</span>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+            <!-- Data Visualization -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="35.34" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fas fa-chart-bar text-blue-400 text-lg"></i>
-                  <span class="text-white text-sm">Data Visualization</span>
+                  <span class="text-white font-medium text-sm">Viz</span>
                 </div>
-                <span class="text-blue-400 text-xs font-medium">88%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                  style="width: 88%"
-                ></div>
+                <span class="text-blue-400 text-lg font-bold">88%</span>
               </div>
             </div>
           </div>
@@ -2049,59 +2057,68 @@
         <div
           class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)]"
         >
-          <div class="flex items-center gap-3 mb-6">
+          <div class="flex items-center gap-3 mb-8">
             <div class="bg-purple-500/20 p-3 rounded-xl">
               <i class="fas fa-tools text-purple-400 text-xl"></i>
             </div>
             <h3 class="text-xl font-semibold text-white">Tools & Design</h3>
           </div>
 
-          <div class="space-y-5">
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+          <div class="grid grid-cols-2 gap-6">
+            <!-- Figma -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-purple)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <defs>
+                  <linearGradient id="gradient-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fab fa-figma text-purple-400 text-lg"></i>
-                  <span class="text-white text-sm">Figma</span>
+                  <span class="text-white font-medium text-sm">Figma</span>
                 </div>
-                <span class="text-purple-400 text-xs font-medium">85%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-                  style="width: 85%"
-                ></div>
+                <span class="text-purple-400 text-lg font-bold">85%</span>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+            <!-- GitHub -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-purple)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fab fa-github text-purple-400 text-lg"></i>
-                  <span class="text-white text-sm">GitHub</span>
+                  <span class="text-white font-medium text-sm">GitHub</span>
                 </div>
-                <span class="text-purple-400 text-xs font-medium">80%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-                  style="width: 80%"
-                ></div>
+                <span class="text-purple-400 text-lg font-bold">80%</span>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+            <!-- Java -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-purple)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="70.675" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fab fa-java text-purple-400 text-lg"></i>
-                  <span class="text-white text-sm">Java</span>
+                  <span class="text-white font-medium text-sm">Java</span>
                 </div>
-                <span class="text-purple-400 text-xs font-medium">75%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-                  style="width: 75%"
-                ></div>
+                <span class="text-purple-400 text-lg font-bold">75%</span>
               </div>
             </div>
           </div>
@@ -2111,75 +2128,85 @@
         <div
           class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)]"
         >
-          <div class="flex items-center gap-3 mb-6">
+          <div class="flex items-center gap-3 mb-8">
             <div class="bg-green-500/20 p-3 rounded-xl">
               <i class="fas fa-code text-green-400 text-xl"></i>
             </div>
             <h3 class="text-xl font-semibold text-white">Web Development</h3>
           </div>
 
-          <div class="space-y-5">
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+          <div class="grid grid-cols-2 gap-6">
+            <!-- HTML/CSS -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-green)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="28.27" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <defs>
+                  <linearGradient id="gradient-green" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fab fa-html5 text-green-400 text-lg"></i>
-                  <span class="text-white text-sm">HTML / CSS</span>
+                  <span class="text-white font-medium text-sm">HTML</span>
                 </div>
-                <span class="text-green-400 text-xs font-medium">90%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
-                  style="width: 90%"
-                ></div>
+                <span class="text-green-400 text-lg font-bold">90%</span>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+            <!-- JavaScript -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-green)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fab fa-js text-green-400 text-lg"></i>
-                  <span class="text-white text-sm">JavaScript</span>
+                  <span class="text-white font-medium text-sm">JS</span>
                 </div>
-                <span class="text-green-400 text-xs font-medium">85%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
-                  style="width: 85%"
-                ></div>
+                <span class="text-green-400 text-lg font-bold">85%</span>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+            <!-- PHP -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-green)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fab fa-php text-green-400 text-lg"></i>
-                  <span class="text-white text-sm">PHP</span>
+                  <span class="text-white font-medium text-sm">PHP</span>
                 </div>
-                <span class="text-green-400 text-xs font-medium">80%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
-                  style="width: 80%"
-                ></div>
+                <span class="text-green-400 text-lg font-bold">80%</span>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+            <!-- MERN Stack -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-green)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fab fa-react text-green-400 text-lg"></i>
-                  <span class="text-white text-sm">MERN Stack</span>
+                  <span class="text-white font-medium text-sm">MERN</span>
                 </div>
-                <span class="text-green-400 text-xs font-medium">85%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
-                  style="width: 85%"
-                ></div>
+                <span class="text-green-400 text-lg font-bold">85%</span>
               </div>
             </div>
           </div>
@@ -2189,77 +2216,85 @@
         <div
           class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)]"
         >
-          <div class="flex items-center gap-3 mb-6">
+          <div class="flex items-center gap-3 mb-8">
             <div class="bg-yellow-500/20 p-3 rounded-xl">
               <i class="fas fa-mobile-alt text-yellow-400 text-xl"></i>
             </div>
-            <h3 class="text-xl font-semibold text-white">
-              Mobile App Development
-            </h3>
+            <h3 class="text-xl font-semibold text-white">Mobile App Dev</h3>
           </div>
 
-          <div class="space-y-5">
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+          <div class="grid grid-cols-2 gap-6">
+            <!-- Android -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-yellow)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <defs>
+                  <linearGradient id="gradient-yellow" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#eab308;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fab fa-android text-yellow-400 text-lg"></i>
-                  <span class="text-white text-sm">Android (Java/Kotlin)</span>
+                  <span class="text-white font-medium text-sm">Android</span>
                 </div>
-                <span class="text-yellow-400 text-xs font-medium">80%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
-                  style="width: 80%"
-                ></div>
+                <span class="text-yellow-400 text-lg font-bold">80%</span>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+            <!-- iOS -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-yellow)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="240.295" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fab fa-apple text-yellow-400 text-lg"></i>
-                  <span class="text-white text-sm">iOS Development</span>
+                  <span class="text-white font-medium text-sm">iOS</span>
                 </div>
-                <span class="text-yellow-400 text-xs font-medium">15%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
-                  style="width: 15%"
-                ></div>
+                <span class="text-yellow-400 text-lg font-bold">15%</span>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+            <!-- React Native -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-yellow)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fab fa-react text-yellow-400 text-lg"></i>
-                  <span class="text-white text-sm">React Native</span>
+                  <span class="text-white font-medium text-sm">React N</span>
                 </div>
-                <span class="text-yellow-400 text-xs font-medium">85%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
-                  style="width: 85%"
-                ></div>
+                <span class="text-yellow-400 text-lg font-bold">85%</span>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
+            <!-- Firebase -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-yellow)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="49.47" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </svg>
+              <div class="text-center mt-3">
+                <div class="flex items-center justify-center gap-2 mb-1">
                   <i class="fas fa-fire text-yellow-400 text-lg"></i>
-                  <span class="text-white text-sm">Firebase</span>
+                  <span class="text-white font-medium text-sm">Firebase</span>
                 </div>
-                <span class="text-yellow-400 text-xs font-medium">82%</span>
-              </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
-                  style="width: 82%"
-                ></div>
+                <span class="text-yellow-400 text-lg font-bold">82%</span>
               </div>
             </div>
           </div>
@@ -2270,75 +2305,85 @@
       <div
         class="glass rounded-2xl p-6 mt-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)]"
       >
-        <div class="flex items-center gap-3 mb-6">
+        <div class="flex items-center gap-3 mb-8">
           <div class="bg-pink-500/20 p-3 rounded-xl">
             <i class="fas fa-users text-pink-400 text-xl"></i>
           </div>
           <h3 class="text-xl font-semibold text-white">Soft Skills</h3>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div class="relative">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-3">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Communication -->
+          <div class="flex flex-col items-center">
+            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+              <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-pink)" stroke-width="6" 
+                stroke-dasharray="282.7" stroke-dashoffset="28.27" stroke-linecap="round"
+                class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              <defs>
+                <linearGradient id="gradient-pink" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#f43f5e;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="text-center mt-3">
+              <div class="flex items-center justify-center gap-2 mb-1">
                 <i class="fas fa-comments text-pink-400 text-lg"></i>
-                <span class="text-white text-sm">Communication</span>
+                <span class="text-white font-medium text-sm">Communication</span>
               </div>
-              <span class="text-pink-400 text-xs font-medium">90%</span>
-            </div>
-            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-              <div
-                class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"
-                style="width: 90%"
-              ></div>
+              <span class="text-pink-400 text-lg font-bold">90%</span>
             </div>
           </div>
 
-          <div class="relative">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-3">
+          <!-- Teamwork -->
+          <div class="flex flex-col items-center">
+            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+              <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-pink)" stroke-width="6" 
+                stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+            </svg>
+            <div class="text-center mt-3">
+              <div class="flex items-center justify-center gap-2 mb-1">
                 <i class="fas fa-people-arrows text-pink-400 text-lg"></i>
-                <span class="text-white text-sm">Teamwork</span>
+                <span class="text-white font-medium text-sm">Teamwork</span>
               </div>
-              <span class="text-pink-400 text-xs font-medium">85%</span>
-            </div>
-            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-              <div
-                class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"
-                style="width: 85%"
-              ></div>
+              <span class="text-pink-400 text-lg font-bold">85%</span>
             </div>
           </div>
 
-          <div class="relative">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-3">
+          <!-- Problem Solving -->
+          <div class="flex flex-col items-center">
+            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+              <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-pink)" stroke-width="6" 
+                stroke-dasharray="282.7" stroke-dashoffset="35.34" stroke-linecap="round"
+                class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+            </svg>
+            <div class="text-center mt-3">
+              <div class="flex items-center justify-center gap-2 mb-1">
                 <i class="fas fa-lightbulb text-pink-400 text-lg"></i>
-                <span class="text-white text-sm">Problem Solving</span>
+                <span class="text-white font-medium text-sm">Problem Solving</span>
               </div>
-              <span class="text-pink-400 text-xs font-medium">88%</span>
-            </div>
-            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-              <div
-                class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"
-                style="width: 88%"
-              ></div>
+              <span class="text-pink-400 text-lg font-bold">88%</span>
             </div>
           </div>
 
-          <div class="relative">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-3">
+          <!-- Time Management -->
+          <div class="flex flex-col items-center">
+            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+              <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-pink)" stroke-width="6" 
+                stroke-dasharray="282.7" stroke-dashoffset="37.26" stroke-linecap="round"
+                class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+            </svg>
+            <div class="text-center mt-3">
+              <div class="flex items-center justify-center gap-2 mb-1">
                 <i class="fas fa-clock text-pink-400 text-lg"></i>
-                <span class="text-white text-sm">Time Management</span>
+                <span class="text-white font-medium text-sm">Time Mgmt</span>
               </div>
-              <span class="text-pink-400 text-xs font-medium">87%</span>
-            </div>
-            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-              <div
-                class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"
-                style="width: 87%"
-              ></div>
+              <span class="text-pink-400 text-lg font-bold">87%</span>
             </div>
           </div>
         </div>
@@ -3568,3 +3613,4 @@
     </script>
   </body>
 </html>
+
