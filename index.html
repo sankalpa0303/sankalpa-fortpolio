@@ -188,11 +188,11 @@
       .navbar,
       .nav-links,
       footer {
-        background: rgba(9, 12, 32, 0.35);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 20px 45px rgba(5, 5, 15, 0.4);
+        background: rgba(9, 12, 32, 0.05);
+        backdrop-filter: blur(35px);
+        -webkit-backdrop-filter: blur(35px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 25px 50px rgba(5, 5, 15, 0.1), inset 0 0 30px rgba(255, 255, 255, 0.05);
       }
 
       body.bg-light-bg {
@@ -221,21 +221,40 @@
       body.bg-light-bg .contact-info,
       body.bg-light-bg .contact-form,
       body.bg-light-bg footer {
-        background: rgba(255, 255, 255, 0.92);
-        border: 1px solid rgba(15, 23, 42, 0.08);
-        box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08), inset 0 0 30px rgba(255, 255, 255, 0.1);
       }
 
       body.bg-light-bg .nav-links {
-        background: rgba(255, 255, 255, 0.92);
-        border: 1px solid rgba(15, 23, 42, 0.08);
-        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08), inset 0 0 20px rgba(255, 255, 255, 0.1);
+      }
+
+      /* Theme Toggle Button */
+      .theme-toggle {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        transition: all 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.12) !important;
+        border-color: rgba(255, 255, 255, 0.25) !important;
       }
 
       body.bg-light-bg .theme-toggle {
-        background: rgba(15, 23, 42, 0.08);
-        border: 1px solid rgba(15, 23, 42, 0.12);
+        background: rgba(15, 23, 42, 0.05) !important;
+        border: 1px solid rgba(15, 23, 42, 0.12) !important;
         color: #0f172a !important;
+      }
+
+      body.bg-light-bg .theme-toggle:hover {
+        background: rgba(15, 23, 42, 0.08) !important;
+        border-color: rgba(15, 23, 42, 0.15) !important;
       }
 
       body.bg-light-bg :is(h1, h2, h3, h4, h5, h6):not(
@@ -289,9 +308,11 @@
       }
 
       .glass-light {
-        background: rgba(255, 255, 255, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        box-shadow: 0 20px 40px rgba(5, 5, 15, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.05);
       }
 
       .project-card {
@@ -350,14 +371,14 @@
 
       .contact-info,
       .contact-form {
-        background: rgba(9, 12, 32, 0.25);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(9, 12, 32, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
       }
 
       .contact-info:hover,
       .contact-form:hover {
-        background: rgba(9, 12, 32, 0.35);
-        border-color: rgba(255, 255, 255, 0.12);
+        background: rgba(9, 12, 32, 0.08);
+        border-color: rgba(255, 255, 255, 0.25);
       }
 
       .projects-grid {
@@ -380,6 +401,134 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+      }
+
+      /* Profile Picture Animation */
+      .profile-picture-container {
+        position: relative;
+        display: inline-block;
+        animation: profileFloat 3s ease-in-out infinite;
+      }
+
+      @keyframes profileFloat {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      .profile-picture-container::before {
+        content: '';
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        right: -15px;
+        bottom: -15px;
+        background: radial-gradient(circle, rgba(108, 99, 255, 0.4) 0%, rgba(78, 205, 196, 0.2) 100%);
+        border-radius: 50%;
+        animation: glowPulse 2s ease-in-out infinite;
+        z-index: -1;
+      }
+
+      .profile-picture-container::after {
+        content: '';
+        position: absolute;
+        top: -25px;
+        left: -25px;
+        right: -25px;
+        bottom: -25px;
+        border: 2px solid rgba(108, 99, 255, 0.3);
+        border-radius: 50%;
+        animation: rotateBorder 8s linear infinite;
+        z-index: -2;
+      }
+
+      @keyframes glowPulse {
+        0%, 100% {
+          box-shadow: 0 0 20px rgba(108, 99, 255, 0.4), 0 0 40px rgba(78, 205, 196, 0.2);
+          transform: scale(1);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(108, 99, 255, 0.6), 0 0 60px rgba(78, 205, 196, 0.3);
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes rotateBorder {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Hero Items Staggered Animation */
+      .hero-title {
+        animation: slideInDown 0.8s ease-out 0.2s backwards;
+      }
+
+      .hero-subtitle {
+        animation: slideInUp 0.8s ease-out 0.4s backwards;
+      }
+
+      .hero-description {
+        animation: slideInUp 0.8s ease-out 0.6s backwards;
+      }
+
+      .hero-buttons {
+        animation: slideInUp 0.8s ease-out 0.8s backwards;
+      }
+
+      .hero-buttons .btn {
+        transition: all 0.3s ease;
+      }
+
+      .hero-buttons .btn:nth-child(1) {
+        animation: scaleIn 0.6s ease-out 1s backwards;
+      }
+
+      .hero-buttons .btn:nth-child(2) {
+        animation: scaleIn 0.6s ease-out 1.15s backwards;
+      }
+
+      .hero-buttons .btn:nth-child(3) {
+        animation: scaleIn 0.6s ease-out 1.3s backwards;
+      }
+
+      @keyframes slideInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       .animated-title {
@@ -464,6 +613,37 @@
         animation: progressBar 2s ease;
       }
 
+      /* Ultra Transparent Galaxy Effect */
+      .bg-white\\/5,
+      .bg-white\\/10,
+      .bg-white\\/20,
+      [class*="bg-primary"],
+      [class*="bg-gradient"],
+      [class*="bg-secondary"] {
+        background: rgba(255, 255, 255, 0.03) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+      }
+
+      /* Progress bars */
+      .w-full.h-2.bg-white\\/10.rounded-full {
+        background: rgba(255, 255, 255, 0.05) !important;
+      }
+
+      /* Tags and badges */
+      [class*="px-2"][class*="py-1"][class*="bg-white\\/5"][class*="rounded"] {
+        background: rgba(255, 255, 255, 0.03) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      }
+
+      /* Cards with semi-transparent backgrounds */
+      [class*="p-"][class*="bg-white\\/"][class*="rounded"] {
+        background: rgba(255, 255, 255, 0.03) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      }
+
       .typing-container {
         border-right: 2px solid var(--secondary-color);
         animation: blink 1s step-end infinite;
@@ -545,9 +725,34 @@
         background: transparent !important;
       }
 
+      /* Galaxy/Glassmorphism Enhancement */
+      [class*="bg-white/"] {
+        --tw-bg-opacity: 0.05 !important;
+      }
+
+      .bg-white\\/5 {
+        background-color: rgba(255, 255, 255, 0.03) !important;
+      }
+
+      .bg-white\\/10 {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+      }
+
+      .bg-white\\/20 {
+        background-color: rgba(255, 255, 255, 0.08) !important;
+      }
+
+      .bg-gradient-1\\/10 {
+        background-color: rgba(108, 99, 255, 0.05) !important;
+      }
+
+      .bg-primary\\/10 {
+        background-color: rgba(108, 99, 255, 0.05) !important;
+      }
+
       /* Light theme overrides */
       [data-theme="light"] .glass {
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.5);
         border: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
       }
@@ -745,49 +950,81 @@
           position: fixed;
           top: 70px;
           right: -100%;
-          width: 70%;
+          width: 85%;
           height: calc(100vh - 70px);
-          background: #050a18;
-          backdrop-filter: none;
+          background: rgba(9, 12, 32, 0.15);
+          backdrop-filter: blur(25px);
+          -webkit-backdrop-filter: blur(25px);
           flex-direction: column;
           padding: 2rem;
           transition: right 0.3s ease;
           z-index: 60;
           gap: 1.5rem;
-          border-radius: 24px 0 0 24px;
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 20px 0 0 20px;
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+          border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         [data-theme="light"] .nav-links {
-          background: #f8fafc;
-          border: 1px solid rgba(15, 23, 42, 0.08);
-          box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+          background: rgba(255, 255, 255, 0.65);
+          border: 1px solid rgba(15, 23, 42, 0.12);
+          box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
         }
 
         .nav-links > li:not([hidden]) ~ li:not([hidden]) {
           margin-left: 0 !important;
         }
-
         .nav-links li {
           width: 100%;
+          padding: 0.75rem 1rem;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+          background: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-links li:hover {
+          background: rgba(108, 99, 255, 0.2);
+          transform: translateX(8px);
         }
 
         .nav-links a {
           display: block;
           width: 100%;
+          font-weight: 500;
+          color: inherit;
+          transition: all 0.3s ease;
         }
 
         .nav-links.active {
           right: 0;
         }
 
+        /* Modern Hamburger Animation */
+        .hamburger {
+          width: 30px;
+          height: 24px;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+        }
+
+        .hamburger span {
+          width: 100%;
+          height: 3px;
+          background: white;
+          border-radius: 2px;
+          transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          transform-origin: center;
+        }
+
         .hamburger.active span:nth-child(1) {
-          transform: rotate(45deg) translate(8px, 8px);
+          transform: rotate(45deg) translate(10px, 10px);
         }
 
         .hamburger.active span:nth-child(2) {
           opacity: 0;
+          transform: translateX(-10px);
         }
 
         .hamburger.active span:nth-child(3) {
@@ -975,24 +1212,26 @@
       <div
         class="hero-content relative z-10 animate-fadeInUp flex flex-col items-center"
       >
-        <div
-          class="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white/20 shadow-xl mb-6 backdrop-blur-lg"
-        >
-          <img
-            src="images/pasindu.jpg"
-            alt="Pasindu Sankalpa"
-            class="w-full h-full object-cover"
-          />
+        <div class="profile-picture-container mb-6">
+          <div
+            class="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white/20 shadow-xl backdrop-blur-lg"
+          >
+            <img
+              src="images/pasindu.jpg"
+              alt="Pasindu Sankalpa"
+              class="w-full h-full object-cover"
+            />
+          </div>
         </div>
 
         <h1
-          class="text-4xl md:text-6xl font-bold mb-4 text-gradient text-center"
+          class="hero-title text-4xl md:text-6xl font-bold mb-4 text-gradient text-center"
         >
           Pasindu Sankalpa Basnayaka
         </h1>
 
         <h2
-          class="animated-title text-xl md:text-2xl font-normal text-gray-300 mb-4"
+          class="hero-subtitle animated-title text-xl md:text-2xl font-normal text-gray-300 mb-4"
         >
           <span class="title-part">IT Undergraduate</span>
           <span class="title-separator">|</span>
@@ -1003,7 +1242,7 @@
         </h2>
 
         <div
-          class="typing-text text-lg md:text-xl text-secondary min-h-10 mb-8 typing-container"
+          class="hero-description typing-text text-lg md:text-xl text-secondary min-h-10 mb-8 typing-container"
           id="typing"
         ></div>
 
