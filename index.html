@@ -396,6 +396,94 @@
         }
       }
 
+      .section-title {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0 auto 2rem;
+        text-align: center;
+        text-transform: none;
+        background: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        content: none;
+      }
+
+      .section-title__eyebrow {
+        font-size: 0.8rem;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: #a9b8d8;
+        opacity: 0.8;
+        animation: fadeSlideUp 0.9s ease forwards;
+      }
+
+      .section-title__text {
+        font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+        font-weight: 700;
+        background: linear-gradient(115deg, #7dd3fc 0%, #a78bfa 45%, #f472b6 100%);
+        background-size: 200% 200%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.01em;
+        text-shadow: 0 8px 25px rgba(15, 23, 42, 0.35);
+        animation: titleGlow 6s ease infinite alternate;
+      }
+
+      @keyframes titleSweep {
+        from {
+          transform: translateX(-10%);
+        }
+        to {
+          transform: translateX(10%);
+        }
+      }
+
+      @keyframes titleGlow {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes fadeSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      body.bg-light-bg .section-title__eyebrow {
+        color: #7c859b;
+      }
+
+      body.bg-light-bg .section-title__text {
+        background: linear-gradient(115deg, #0f172a, #334155, #0f172a);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: none;
+      }
+
       .text-gradient {
         background: var(--gradient-1);
         -webkit-background-clip: text;
@@ -496,6 +584,63 @@
 
       .hero-buttons .btn:nth-child(3) {
         animation: scaleIn 0.6s ease-out 1.3s backwards;
+      }
+
+      .btn-download-highlight {
+        position: relative;
+        isolation: isolate;
+        animation: downloadPulse 3s ease-in-out infinite;
+      }
+
+      .btn-download-highlight::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 999px;
+        background: linear-gradient(115deg, rgba(255, 255, 255, 0.45), transparent);
+        opacity: 0.35;
+        z-index: -1;
+        filter: blur(10px);
+      }
+
+      @keyframes downloadPulse {
+        0%,
+        100% {
+          transform: translateY(0);
+          box-shadow: 0 12px 35px rgba(129, 140, 248, 0.45),
+            0 0 25px rgba(56, 189, 248, 0.35);
+        }
+        50% {
+          transform: translateY(-4px);
+          box-shadow: 0 20px 45px rgba(99, 102, 241, 0.55),
+            0 0 35px rgba(14, 165, 233, 0.45);
+        }
+      }
+
+      .btn-glow-sky {
+        position: relative;
+        isolation: isolate;
+        box-shadow: 0 12px 32px rgba(99, 102, 241, 0.35),
+          0 0 22px rgba(14, 165, 233, 0.35);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .btn-glow-sky:hover {
+        box-shadow: 0 18px 42px rgba(99, 102, 241, 0.5),
+          0 0 30px rgba(14, 165, 233, 0.45);
+      }
+
+      .btn-glow-emerald {
+        position: relative;
+        isolation: isolate;
+        box-shadow: 0 12px 32px rgba(16, 185, 129, 0.35),
+          0 0 22px rgba(45, 212, 191, 0.35);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .btn-glow-emerald:hover {
+        box-shadow: 0 18px 42px rgba(16, 185, 129, 0.5),
+          0 0 30px rgba(45, 212, 191, 0.45);
       }
 
       @keyframes slideInDown {
@@ -613,10 +758,74 @@
         animation: progressBar 2s ease;
       }
 
+      .skill-progress-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.2rem;
+      }
+
+      .skill-progress-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 1.25rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .skill-progress-item:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+
+      .progress-circle {
+        --value: 0;
+        --progress-color: #60a5fa;
+        width: 90px;
+        height: 90px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: conic-gradient(
+          var(--progress-color) calc(var(--value) * 3.6deg),
+          rgba(255, 255, 255, 0.08) 0
+        );
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .progress-circle::after {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        border-radius: inherit;
+        background: rgba(6, 11, 25, 0.9);
+      }
+
+      .progress-circle span {
+        position: relative;
+        font-weight: 600;
+        color: #e2e8ff;
+      }
+
+      body.bg-light-bg .skill-progress-item {
+        background: rgba(15, 23, 42, 0.04);
+        border-color: rgba(15, 23, 42, 0.08);
+      }
+
+      body.bg-light-bg .progress-circle::after {
+        background: rgba(255, 255, 255, 0.85);
+      }
+
+      body.bg-light-bg .progress-circle span {
+        color: #0f172a;
+      }
+
       /* Ultra Transparent Galaxy Effect */
-      .bg-white\\/5,
-      .bg-white\\/10,
-      .bg-white\\/20,
+     
       [class*="bg-primary"],
       [class*="bg-gradient"],
       [class*="bg-secondary"] {
@@ -626,9 +835,7 @@
       }
 
       /* Progress bars */
-      .w-full.h-2.bg-white\\/10.rounded-full {
-        background: rgba(255, 255, 255, 0.05) !important;
-      }
+     
 
       /* Tags and badges */
       [class*="px-2"][class*="py-1"][class*="bg-white\\/5"][class*="rounded"] {
@@ -730,25 +937,6 @@
         --tw-bg-opacity: 0.05 !important;
       }
 
-      .bg-white\\/5 {
-        background-color: rgba(255, 255, 255, 0.03) !important;
-      }
-
-      .bg-white\\/10 {
-        background-color: rgba(255, 255, 255, 0.05) !important;
-      }
-
-      .bg-white\\/20 {
-        background-color: rgba(255, 255, 255, 0.08) !important;
-      }
-
-      .bg-gradient-1\\/10 {
-        background-color: rgba(108, 99, 255, 0.05) !important;
-      }
-
-      .bg-primary\\/10 {
-        background-color: rgba(108, 99, 255, 0.05) !important;
-      }
 
       /* Light theme overrides */
       [data-theme="light"] .glass {
@@ -1249,7 +1437,7 @@
         <div class="hero-buttons flex gap-6 justify-center flex-wrap">
           <a
             href="#projects"
-            class="btn btn-primary px-8 py-3 rounded-full font-medium text-white bg-gradient-1 shadow-lg shadow-primary/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/50"
+            class="btn btn-primary btn-glow-sky px-8 py-3 rounded-full font-medium text-white bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 transition-all duration-300 hover:-translate-y-1"
           >
             View Projects
           </a>
@@ -1257,14 +1445,14 @@
           <a
             href="./assets/PasinduSankalpaCV.pdf"
             download="Pasindu_Sankalpa_CV.pdf"
-            class="btn btn-secondary px-8 py-3 rounded-full font-medium text-white bg-white/10 backdrop-blur-sm border border-white/20 shadow-md transition-all duration-300 hover:bg-primary hover:-translate-y-1"
+            class="btn btn-secondary btn-download-highlight px-8 py-3 rounded-full font-medium text-white bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 transition-all duration-300 hover:-translate-y-1"
           >
             <i class="fas fa-download mr-2"></i> Download CV
           </a>
 
           <a
             href="#contact"
-            class="px-8 py-3 rounded-full font-medium text-white bg-gradient-3 shadow-lg shadow-purple-500/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/50"
+            class="btn-glow-emerald px-8 py-3 rounded-full font-medium text-white bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500 transition-all duration-300 hover:-translate-y-1"
           >
             Contact Me
           </a>
@@ -1275,10 +1463,9 @@
 
     <!-- About Section -->
     <section id="about" class="py-20 px-5 lg:px-20 max-w-7xl mx-auto">
-      <h2
-        class="section-title text-3xl md:text-4xl font-bold text-center mb-16 relative after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-24 after:h-1 after:bg-gradient-1 animate-fadeInUp"
-      >
-        About Me
+      <h2 class="section-title">
+        <span class="section-title__eyebrow">chapter one</span>
+        <span class="section-title__text">About Me</span>
       </h2>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -1392,13 +1579,11 @@
         class="absolute w-80 h-80 bg-gradient-3 rounded-full blur-[150px] opacity-10 bottom-0 left-0 animate-float animation-delay-2000"
       ></div>
 
-      <h2
-        class="section-title text-3xl md:text-4xl font-bold text-center mb-12 relative"
-      >
-        Extracurricular, Leadership & Achievements
-        <span
-          class="block mx-auto mt-2 w-24 h-1 bg-gradient-1 rounded-full"
-        ></span>
+      <h2 class="section-title">
+        <span class="section-title__eyebrow">beyond the desk</span>
+        <span class="section-title__text">
+          Extracurricular, Leadership & Achievements
+        </span>
       </h2>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 relative z-10">
@@ -1566,13 +1751,9 @@
         class="absolute w-80 h-80 bg-gradient-3 rounded-full blur-[150px] opacity-10 bottom-10 right-10 animate-float animation-delay-2000"
       ></div>
 
-      <h2
-        class="section-title text-3xl md:text-4xl font-bold text-center mb-12 relative"
-      >
-        Education & Experience
-        <span
-          class="block mx-auto mt-2 w-20 h-1 bg-gradient-1 rounded-full"
-        ></span>
+      <h2 class="section-title">
+        <span class="section-title__eyebrow">trajectory</span>
+        <span class="section-title__text">Education & Experience</span>
       </h2>
 
       <div class="flex flex-col lg:flex-row gap-6">
@@ -1844,13 +2025,9 @@
         class="absolute w-80 h-80 bg-gradient-3 rounded-full blur-[150px] opacity-10 bottom-10 right-10 animate-float animation-delay-2000"
       ></div>
 
-      <h2
-        class="section-title text-3xl md:text-4xl font-bold text-center mb-12 relative"
-      >
-        Skills & Expertise
-        <span
-          class="block mx-auto mt-2 w-20 h-1 bg-gradient-1 rounded-full"
-        ></span>
+      <h2 class="section-title">
+        <span class="section-title__eyebrow">craft set</span>
+        <span class="section-title__text">Skills & Expertise</span>
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1865,70 +2042,56 @@
             <h3 class="text-xl font-semibold text-white">Data Science</h3>
           </div>
 
-          <div class="space-y-5">
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fab fa-python text-blue-400 text-lg"></i>
-                  <span class="text-white text-sm"
-                    >Python (Pandas, SkLearn)</span
-                  >
-                </div>
-                <span class="text-blue-400 text-xs font-medium">90%</span>
+          <div class="skill-progress-grid">
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 90; --progress-color: #60a5fa"
+              >
+                <span>90%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                  style="width: 90%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">Python</p>
+                <p class="text-gray-400 text-sm">Pandas · SkLearn</p>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fas fa-database text-blue-400 text-lg"></i>
-                  <span class="text-white text-sm">SQL</span>
-                </div>
-                <span class="text-blue-400 text-xs font-medium">85%</span>
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 85; --progress-color: #93c5fd"
+              >
+                <span>85%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                  style="width: 85%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">SQL</p>
+                <p class="text-gray-400 text-sm">PostgreSQL · MySQL</p>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fas fa-brain text-blue-400 text-lg"></i>
-                  <span class="text-white text-sm">Machine Learning</span>
-                </div>
-                <span class="text-blue-400 text-xs font-medium">85%</span>
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 85; --progress-color: #818cf8"
+              >
+                <span>85%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                  style="width: 85%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">Machine Learning</p>
+                <p class="text-gray-400 text-sm">Supervised · ML Ops</p>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fas fa-chart-bar text-blue-400 text-lg"></i>
-                  <span class="text-white text-sm">Data Visualization</span>
-                </div>
-                <span class="text-blue-400 text-xs font-medium">88%</span>
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 88; --progress-color: #a5b4fc"
+              >
+                <span>88%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                  style="width: 88%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">Data Visualization</p>
+                <p class="text-gray-400 text-sm">PowerBI · Tableau</p>
               </div>
             </div>
           </div>
@@ -1945,52 +2108,43 @@
             <h3 class="text-xl font-semibold text-white">Tools & Design</h3>
           </div>
 
-          <div class="space-y-5">
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fab fa-figma text-purple-400 text-lg"></i>
-                  <span class="text-white text-sm">Figma</span>
-                </div>
-                <span class="text-purple-400 text-xs font-medium">85%</span>
+          <div class="skill-progress-grid">
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 85; --progress-color: #c084fc"
+              >
+                <span>85%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-                  style="width: 85%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">Figma</p>
+                <p class="text-gray-400 text-sm">Wireframes · Prototypes</p>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fab fa-github text-purple-400 text-lg"></i>
-                  <span class="text-white text-sm">GitHub</span>
-                </div>
-                <span class="text-purple-400 text-xs font-medium">80%</span>
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 80; --progress-color: #d946ef"
+              >
+                <span>80%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-                  style="width: 80%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">Git / GitHub</p>
+                <p class="text-gray-400 text-sm">Collab · CI/CD</p>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fab fa-java text-purple-400 text-lg"></i>
-                  <span class="text-white text-sm">Java</span>
-                </div>
-                <span class="text-purple-400 text-xs font-medium">75%</span>
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 75; --progress-color: #ec4899"
+              >
+                <span>75%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-                  style="width: 75%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">Java</p>
+                <p class="text-gray-400 text-sm">Spring · OOP</p>
               </div>
             </div>
           </div>
@@ -2007,68 +2161,56 @@
             <h3 class="text-xl font-semibold text-white">Web Development</h3>
           </div>
 
-          <div class="space-y-5">
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fab fa-html5 text-green-400 text-lg"></i>
-                  <span class="text-white text-sm">HTML / CSS</span>
-                </div>
-                <span class="text-green-400 text-xs font-medium">90%</span>
+          <div class="skill-progress-grid">
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 90; --progress-color: #34d399"
+              >
+                <span>90%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
-                  style="width: 90%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">HTML · CSS</p>
+                <p class="text-gray-400 text-sm">Responsive · Tailwind</p>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fab fa-js text-green-400 text-lg"></i>
-                  <span class="text-white text-sm">JavaScript</span>
-                </div>
-                <span class="text-green-400 text-xs font-medium">85%</span>
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 85; --progress-color: #2dd4bf"
+              >
+                <span>85%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
-                  style="width: 85%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">JavaScript</p>
+                <p class="text-gray-400 text-sm">ES6 · DOM</p>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fab fa-php text-green-400 text-lg"></i>
-                  <span class="text-white text-sm">PHP</span>
-                </div>
-                <span class="text-green-400 text-xs font-medium">80%</span>
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 80; --progress-color: #14b8a6"
+              >
+                <span>80%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
-                  style="width: 80%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">PHP</p>
+                <p class="text-gray-400 text-sm">REST · MVC</p>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fab fa-react text-green-400 text-lg"></i>
-                  <span class="text-white text-sm">MERN Stack</span>
-                </div>
-                <span class="text-green-400 text-xs font-medium">85%</span>
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 85; --progress-color: #06b6d4"
+              >
+                <span>85%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
-                  style="width: 85%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">MERN Stack</p>
+                <p class="text-gray-400 text-sm">React · Node</p>
               </div>
             </div>
           </div>
@@ -2087,68 +2229,56 @@
             </h3>
           </div>
 
-          <div class="space-y-5">
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fab fa-android text-yellow-400 text-lg"></i>
-                  <span class="text-white text-sm">Android (Java/Kotlin)</span>
-                </div>
-                <span class="text-yellow-400 text-xs font-medium">80%</span>
+          <div class="skill-progress-grid">
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 80; --progress-color: #fbbf24"
+              >
+                <span>80%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
-                  style="width: 80%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">Android</p>
+                <p class="text-gray-400 text-sm">Java · Kotlin</p>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fab fa-apple text-yellow-400 text-lg"></i>
-                  <span class="text-white text-sm">iOS Development</span>
-                </div>
-                <span class="text-yellow-400 text-xs font-medium">15%</span>
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 15; --progress-color: #f97316"
+              >
+                <span>15%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
-                  style="width: 15%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">iOS</p>
+                <p class="text-gray-400 text-sm">Swift UI Basics</p>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fab fa-react text-yellow-400 text-lg"></i>
-                  <span class="text-white text-sm">React Native</span>
-                </div>
-                <span class="text-yellow-400 text-xs font-medium">85%</span>
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 85; --progress-color: #fb923c"
+              >
+                <span>85%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
-                  style="width: 85%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">React Native</p>
+                <p class="text-gray-400 text-sm">Expo · Hooks</p>
               </div>
             </div>
 
-            <div class="relative">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-3">
-                  <i class="fas fa-fire text-yellow-400 text-lg"></i>
-                  <span class="text-white text-sm">Firebase</span>
-                </div>
-                <span class="text-yellow-400 text-xs font-medium">82%</span>
+            <div class="skill-progress-item">
+              <div
+                class="progress-circle"
+                style="--value: 82; --progress-color: #facc15"
+              >
+                <span>82%</span>
               </div>
-              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
-                  style="width: 82%"
-                ></div>
+              <div>
+                <p class="text-white font-medium">Firebase</p>
+                <p class="text-gray-400 text-sm">Auth · Firestore</p>
               </div>
             </div>
           </div>
@@ -2166,68 +2296,56 @@
           <h3 class="text-xl font-semibold text-white">Soft Skills</h3>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div class="relative">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-3">
-                <i class="fas fa-comments text-pink-400 text-lg"></i>
-                <span class="text-white text-sm">Communication</span>
-              </div>
-              <span class="text-pink-400 text-xs font-medium">90%</span>
+        <div class="skill-progress-grid">
+          <div class="skill-progress-item">
+            <div
+              class="progress-circle"
+              style="--value: 90; --progress-color: #fb7185"
+            >
+              <span>90%</span>
             </div>
-            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-              <div
-                class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"
-                style="width: 90%"
-              ></div>
+            <div>
+              <p class="text-white font-medium">Communication</p>
+              <p class="text-gray-400 text-sm">Facilitation · Storytelling</p>
             </div>
           </div>
 
-          <div class="relative">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-3">
-                <i class="fas fa-people-arrows text-pink-400 text-lg"></i>
-                <span class="text-white text-sm">Teamwork</span>
-              </div>
-              <span class="text-pink-400 text-xs font-medium">85%</span>
+          <div class="skill-progress-item">
+            <div
+              class="progress-circle"
+              style="--value: 85; --progress-color: #f472b6"
+            >
+              <span>85%</span>
             </div>
-            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-              <div
-                class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"
-                style="width: 85%"
-              ></div>
+            <div>
+              <p class="text-white font-medium">Teamwork</p>
+              <p class="text-gray-400 text-sm">Mentoring · Sync</p>
             </div>
           </div>
 
-          <div class="relative">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-3">
-                <i class="fas fa-lightbulb text-pink-400 text-lg"></i>
-                <span class="text-white text-sm">Problem Solving</span>
-              </div>
-              <span class="text-pink-400 text-xs font-medium">88%</span>
+          <div class="skill-progress-item">
+            <div
+              class="progress-circle"
+              style="--value: 88; --progress-color: #ec4899"
+            >
+              <span>88%</span>
             </div>
-            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-              <div
-                class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"
-                style="width: 88%"
-              ></div>
+            <div>
+              <p class="text-white font-medium">Problem Solving</p>
+              <p class="text-gray-400 text-sm">Critical Thinking</p>
             </div>
           </div>
 
-          <div class="relative">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-3">
-                <i class="fas fa-clock text-pink-400 text-lg"></i>
-                <span class="text-white text-sm">Time Management</span>
-              </div>
-              <span class="text-pink-400 text-xs font-medium">87%</span>
+          <div class="skill-progress-item">
+            <div
+              class="progress-circle"
+              style="--value: 87; --progress-color: #db2777"
+            >
+              <span>87%</span>
             </div>
-            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-              <div
-                class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"
-                style="width: 87%"
-              ></div>
+            <div>
+              <p class="text-white font-medium">Time Management</p>
+              <p class="text-gray-400 text-sm">Prioritization</p>
             </div>
           </div>
         </div>
@@ -2246,13 +2364,9 @@
         class="absolute w-80 h-80 bg-gradient-3 rounded-full blur-[150px] opacity-10 bottom-10 right-10 animate-float animation-delay-2000"
       ></div>
 
-      <h2
-        class="section-title text-3xl md:text-4xl font-bold text-center mb-12 relative"
-      >
-        My Projects
-        <span
-          class="block mx-auto mt-2 w-20 h-1 bg-gradient-1 rounded-full"
-        ></span>
+      <h2 class="section-title">
+        <span class="section-title__eyebrow">build log</span>
+        <span class="section-title__text">My Projects</span>
       </h2>
 
       <div class="projects-grid">
@@ -2316,7 +2430,6 @@
                 <i class="fas fa-external-link-alt mr-1"></i> Demo
               </a>
             </div>
-          </div>
         </div>
 
         <!-- Project 2 -->
@@ -2898,13 +3011,9 @@
         class="absolute w-80 h-80 bg-gradient-3 rounded-full blur-[150px] opacity-10 bottom-10 right-10 animate-float animation-delay-2000"
       ></div>
 
-      <h2
-        class="section-title text-3xl md:text-4xl font-bold text-center mb-12 relative"
-      >
-        Get In Touch
-        <span
-          class="block mx-auto mt-2 w-20 h-1 bg-gradient-1 rounded-full"
-        ></span>
+      <h2 class="section-title">
+        <span class="section-title__eyebrow">say hello</span>
+        <span class="section-title__text">Get In Touch</span>
       </h2>
 
       <div
