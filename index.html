@@ -774,6 +774,32 @@
         border: 1px solid rgba(255, 255, 255, 0.05);
         backdrop-filter: blur(12px);
         transition: transform 0.3s ease, border-color 0.3s ease;
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+      }
+
+      .skill-progress-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .skill-progress-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .skill-progress-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .skill-progress-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      .skill-progress-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      .skill-progress-item:nth-child(n+6) {
+        animation-delay: 0.6s;
       }
 
       .skill-progress-item:hover {
@@ -795,6 +821,7 @@
         );
         position: relative;
         flex-shrink: 0;
+        animation: progressBar 2.5s ease-out forwards;
       }
 
       .progress-circle::after {
@@ -803,12 +830,15 @@
         inset: 12px;
         border-radius: inherit;
         background: rgba(6, 11, 25, 0.9);
+        z-index: 1;
       }
 
       .progress-circle span {
         position: relative;
+        z-index: 2;
         font-weight: 600;
         color: #e2e8ff;
+        font-size: 0.95rem;
       }
 
       body.bg-light-bg .skill-progress-item {
