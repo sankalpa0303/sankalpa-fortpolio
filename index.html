@@ -257,6 +257,20 @@
         border-color: rgba(15, 23, 42, 0.15) !important;
       }
 
+      /* Mobile Navigation Panel Responsive Styles */
+      .mobile-nav-panel {
+        width: 320px;
+        max-width: min(320px, 80vw);
+      }
+
+      @media (max-width: 640px) {
+        .mobile-nav-panel {
+          width: 100%;
+          max-width: 100vw;
+          border-radius: 0;
+        }
+      }
+
       body.bg-light-bg :is(h1, h2, h3, h4, h5, h6):not(
           .text-gradient,
           .nav-gradient
@@ -883,6 +897,47 @@
         color: #2d3748;
       }
 
+      /* Skill Circle Highlight Animations */
+      @keyframes skillGlow {
+        0%, 100% {
+          filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+          transform: scale(1);
+        }
+        50% {
+          filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes skillPulse {
+        0%, 100% {
+          stroke-width: 6;
+          opacity: 0.8;
+        }
+        50% {
+          stroke-width: 7;
+          opacity: 1;
+        }
+      }
+
+      /* Apply hover animation to skill SVGs */
+      svg.skill-icon {
+        transition: all 0.3s ease;
+      }
+
+      svg.skill-icon:hover {
+        animation: skillGlow 0.8s ease-in-out forwards;
+      }
+
+      svg.skill-icon:hover .skill-progress {
+        animation: skillPulse 0.8s ease-in-out forwards;
+      }
+
+      /* Base animation for skill progress circle */
+      .skill-progress {
+        transition: stroke-width 0.3s ease, opacity 0.3s ease;
+      }
+
       @media (max-width: 768px) {
         .navbar {
           display: none;
@@ -921,7 +976,8 @@
       }
 
       .hero {
-        padding-top: clamp(6rem, 12vw, 8rem);
+        padding-top: clamp(7rem, 15vw, 8rem);
+        min-height: 100vh;
       }
 
       .hero-buttons {
@@ -1017,15 +1073,27 @@
         }
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 1024px) {
         .navbar {
           padding: 0.9rem 1.25rem;
+        }
+
+        .nav-left .logo {
+          font-size: 1.3rem;
+          line-height: 1.2;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 0.75rem 1rem;
           background: #050a18;
           backdrop-filter: none;
           -webkit-backdrop-filter: none;
           border-radius: 0;
           border-bottom: 1px solid rgba(255, 255, 255, 0.08);
           box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
+          gap: 0.5rem;
         }
 
         [data-theme="light"] .navbar {
@@ -1036,8 +1104,29 @@
           box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
         }
 
-        .nav-right {
+        .nav-left {
           gap: 0.75rem;
+          flex: 1;
+        }
+
+        .nav-left .logo {
+          font-size: 1.1rem;
+          line-height: 1.3;
+          max-width: 150px;
+        }
+
+        .nav-left .w-10 {
+          width: 36px;
+          height: 36px;
+          flex-shrink: 0;
+        }
+
+        .nav-left .w-10 i {
+          font-size: 0.85rem;
+        }
+
+        .nav-right {
+          gap: 0.5rem;
         }
 
         .nav-socials {
@@ -1045,8 +1134,7 @@
         }
 
         .nav-socials-mobile {
-          display: flex;
-          margin-top: auto;
+          display: none;
         }
 
         .hero {
@@ -1059,38 +1147,41 @@
 
         .nav-links {
           position: fixed;
-          top: 70px;
+          top: 50px;
           right: -100%;
-          width: 85%;
-          height: calc(100vh - 70px);
+          width: 100%;
+          max-width: 100vw;
+          height: calc(100vh - 50px);
           background: rgba(9, 12, 32, 0.15);
           backdrop-filter: blur(25px);
           -webkit-backdrop-filter: blur(25px);
           flex-direction: column;
-          padding: 2rem;
+          padding: 1.5rem;
           transition: right 0.3s ease;
           z-index: 60;
-          gap: 1.5rem;
-          border-radius: 20px 0 0 20px;
+          gap: 1rem;
+          border-radius: 0;
           box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          border: none;
         }
 
         [data-theme="light"] .nav-links {
           background: rgba(255, 255, 255, 0.65);
-          border: 1px solid rgba(15, 23, 42, 0.12);
+          border: none;
           box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
         }
 
         .nav-links > li:not([hidden]) ~ li:not([hidden]) {
           margin-left: 0 !important;
         }
+        
         .nav-links li {
           width: 100%;
           padding: 0.75rem 1rem;
-          border-radius: 12px;
+          border-radius: 8px;
           transition: all 0.3s ease;
           background: rgba(255, 255, 255, 0.08);
+          margin: 0;
         }
 
         .nav-links li:hover {
@@ -1110,57 +1201,161 @@
           right: 0;
         }
 
-        /* Modern Hamburger Animation */
-        .hamburger {
+      }
+
+      @media (max-width: 640px) {
+        .navbar {
+          padding: 0.65rem 0.75rem;
+        }
+
+        .nav-left {
+          gap: 0.5rem;
+        }
+
+        .nav-left .logo {
+          font-size: 0.95rem;
+          line-height: 1.2;
+          max-width: 120px;
+          font-weight: 700;
+        }
+
+        .nav-left .w-10 {
+          width: 32px;
+          height: 32px;
+        }
+
+        .nav-right {
+          gap: 0.4rem;
+        }
+
+        .theme-toggle {
+          width: 36px;
+          height: 36px;
+          padding: 0.5rem;
+        }
+
+        .theme-toggle i {
+          font-size: 0.85rem;
+        }
+
+        .mobile-menu-toggle {
+          gap: 4px;
+        }
+
+        .mobile-menu-toggle span {
+          width: 24px;
+          height: 2.5px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .navbar {
+          padding: 0.6rem 0.65rem;
+        }
+
+        .nav-left {
+          gap: 0.4rem;
+        }
+
+        .nav-left .logo {
+          font-size: 0.85rem;
+          line-height: 1.2;
+          max-width: 110px;
+        }
+
+        .nav-left .w-10 {
           width: 30px;
-          height: 24px;
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
+          height: 30px;
+          min-width: 30px;
         }
 
-        .hamburger span {
-          width: 100%;
-          height: 3px;
-          background: white;
-          border-radius: 2px;
-          transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          transform-origin: center;
+        .nav-left .w-10 i {
+          font-size: 0.75rem;
         }
 
-        .hamburger.active span:nth-child(1) {
-          transform: rotate(45deg) translate(10px, 10px);
+        .nav-right {
+          gap: 0.3rem;
         }
 
-        .hamburger.active span:nth-child(2) {
-          opacity: 0;
-          transform: translateX(-10px);
+        .theme-toggle {
+          width: 32px;
+          height: 32px;
+          padding: 0.4rem;
         }
 
-        .hamburger.active span:nth-child(3) {
-          transform: rotate(-45deg) translate(7px, -7px);
+        .theme-toggle i {
+          font-size: 0.75rem;
+        }
+
+        .mobile-menu-toggle {
+          gap: 3px;
+          margin-left: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+          width: 20px;
+          height: 2px;
+        }
+
+        .nav-links li {
+          padding: 0.65rem 0.75rem;
+          font-size: 0.95rem;
+        }
+
+        .nav-links {
+          padding: 1rem;
+          gap: 0.75rem;
+        }
+
+        .mobile-nav-panel {
+          width: 100% !important;
+          max-width: 100vw !important;
+        }
+      }
+
+      /* Additional responsive styles for other sections */
+      @media (max-width: 768px) {
+        section {
+          scroll-margin-top: 70px;
+        }
+
+        .hero {
+          padding-top: 6.5rem;
         }
       }
 
       @media (max-width: 640px) {
-        .nav-left {
-          width: 100%;
-          justify-content: space-between;
+        section {
+          scroll-margin-top: 65px;
         }
 
-        .nav-left .logo {
-          font-size: 1.25rem;
-          line-height: 1.3;
+        .hero {
+          padding-top: 6rem;
         }
 
-        .nav-right {
+        .profile-picture-container {
           width: 100%;
-          justify-content: flex-end;
+          max-width: 160px;
+          margin: 0 auto 1.5rem;
+        }
+
+        .profile-picture-container::before {
+          top: -10px;
+          left: -10px;
+          right: -10px;
+          bottom: -10px;
+        }
+
+        .profile-picture-container::after {
+          top: -18px;
+          left: -18px;
+          right: -18px;
+          bottom: -18px;
         }
 
         .hero h1 {
           font-size: 2.25rem;
+          margin: 1.5rem 0 1rem;
         }
 
         .animated-title {
@@ -1179,22 +1374,53 @@
       }
 
       @media (max-width: 480px) {
-        .navbar {
-          padding: 0.75rem 1rem;
+        section {
+          scroll-margin-top: 55px;
         }
 
-        .theme-toggle {
-          width: 40px;
-          height: 40px;
+        .hero {
+          padding-top: 5.5rem;
         }
 
-        .hamburger span {
-          width: 28px;
+        .profile-picture-container {
+          max-width: 140px;
+          margin: 0 auto 1.25rem;
+        }
+
+        .profile-picture-container::before {
+          top: -8px;
+          left: -8px;
+          right: -8px;
+          bottom: -8px;
+        }
+
+        .profile-picture-container::after {
+          top: -15px;
+          left: -15px;
+          right: -15px;
+          bottom: -15px;
+        }
+
+        .hero h1 {
+          font-size: 1.75rem;
+          margin: 1rem 0 0.75rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem;
+          margin: 0.5rem 0;
+        }
+
+        .hero-buttons {
+          gap: 0.5rem;
+          margin-top: 1.5rem;
         }
 
         .hero-buttons a {
           min-width: unset;
           width: 100%;
+          font-size: 0.9rem;
+          padding: 0.65rem 1rem;
         }
       }
     </style>
@@ -1214,7 +1440,7 @@
 
     <!-- Navigation Bar -->
     <nav
-      class="navbar fixed top-0 w-full bg-dark-bg/60 backdrop-blur-xl px-6 lg:px-20 py-4 flex items-center justify-between z-50 border-b border-white/10 shadow-lg shadow-black/20 transition-all duration-300"
+      class="navbar fixed top-0 left-0 right-0 bg-dark-bg/60 backdrop-blur-xl px-4 md:px-6 lg:px-20 py-3 md:py-4 flex items-center justify-between z-50 border-b border-white/10 shadow-lg shadow-black/20 transition-all duration-300"
     >
       <div class="nav-left flex items-center gap-3">
         <div
@@ -2098,74 +2324,74 @@
           <div class="grid grid-cols-2 gap-6">
             <!-- Python -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="28.27" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="28.27" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
                 <defs>
                   <linearGradient id="gradient-blue" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
                     <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
                   </linearGradient>
                 </defs>
+                <text x="50" y="60" text-anchor="middle" fill="#3b82f6" font-size="32" font-weight="bold" class="font-awesome-icon">⦿</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fab fa-python text-blue-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">Python</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">Python</span>
                 <span class="text-blue-400 text-lg font-bold">90%</span>
               </div>
             </div>
 
             <!-- SQL -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
+                <text x="50" y="60" text-anchor="middle" fill="#3b82f6" font-size="28" font-weight="bold">DB</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fas fa-database text-blue-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">SQL</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">SQL</span>
                 <span class="text-blue-400 text-lg font-bold">85%</span>
               </div>
             </div>
 
             <!-- Machine Learning -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
+                <text x="50" y="60" text-anchor="middle" fill="#3b82f6" font-size="24" font-weight="bold">ML</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fas fa-brain text-blue-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">ML</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">ML</span>
                 <span class="text-blue-400 text-lg font-bold">85%</span>
               </div>
             </div>
 
             <!-- R -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
+                <text x="50" y="60" text-anchor="middle" fill="#3b82f6" font-size="32" font-weight="bold">R</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fab fa-r-project text-blue-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">R</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">R</span>
                 <span class="text-blue-400 text-lg font-bold">80%</span>
               </div>
             </div>
@@ -2186,57 +2412,57 @@
           <div class="grid grid-cols-2 gap-6">
             <!-- Figma -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-purple)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-purple)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
                 <defs>
                   <linearGradient id="gradient-purple" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
                     <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
                   </linearGradient>
                 </defs>
+                <circle cx="50" cy="50" r="12" fill="#a855f7" opacity="0.8"/>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fab fa-figma text-purple-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">Figma</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">Figma</span>
                 <span class="text-purple-400 text-lg font-bold">85%</span>
               </div>
             </div>
 
             <!-- GitHub -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-purple)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-purple)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
+                <text x="50" y="60" text-anchor="middle" fill="#a855f7" font-size="28" font-weight="bold">⚙</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fab fa-github text-purple-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">GitHub</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">GitHub</span>
                 <span class="text-purple-400 text-lg font-bold">80%</span>
               </div>
             </div>
 
             <!-- Power BI -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-purple)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-purple)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
+                <text x="50" y="60" text-anchor="middle" fill="#a855f7" font-size="28" font-weight="bold">📊</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fas fa-chart-pie text-purple-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">Power BI</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">Power BI</span>
                 <span class="text-purple-400 text-lg font-bold">85%</span>
               </div>
             </div>
@@ -2257,74 +2483,74 @@
           <div class="grid grid-cols-2 gap-6">
             <!-- HTML/CSS -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-green)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="28.27" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-green)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="28.27" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
                 <defs>
                   <linearGradient id="gradient-green" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
                     <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
                   </linearGradient>
                 </defs>
+                <text x="50" y="60" text-anchor="middle" fill="#22c55e" font-size="24" font-weight="bold">&lt;&gt;</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fab fa-html5 text-green-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">HTML</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">HTML</span>
                 <span class="text-green-400 text-lg font-bold">90%</span>
               </div>
             </div>
 
             <!-- JavaScript -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-green)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-green)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
+                <text x="50" y="60" text-anchor="middle" fill="#22c55e" font-size="26" font-weight="bold">JS</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fab fa-js text-green-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">JS</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">JS</span>
                 <span class="text-green-400 text-lg font-bold">85%</span>
               </div>
             </div>
 
             <!-- PHP -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-green)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-green)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
+                <text x="50" y="60" text-anchor="middle" fill="#22c55e" font-size="26" font-weight="bold">PHP</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fab fa-php text-green-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">PHP</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">PHP</span>
                 <span class="text-green-400 text-lg font-bold">80%</span>
               </div>
             </div>
 
             <!-- MERN Stack -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-green)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-green)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
+                <text x="50" y="62" text-anchor="middle" fill="#22c55e" font-size="18" font-weight="bold">MERN</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fab fa-react text-green-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">MERN</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">MERN</span>
                 <span class="text-green-400 text-lg font-bold">85%</span>
               </div>
             </div>
@@ -2345,74 +2571,74 @@
           <div class="grid grid-cols-2 gap-6">
             <!-- Android -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-yellow)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-yellow)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
                 <defs>
                   <linearGradient id="gradient-yellow" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style="stop-color:#eab308;stop-opacity:1" />
                     <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
                   </linearGradient>
                 </defs>
+                <text x="50" y="60" text-anchor="middle" fill="#eab308" font-size="22" font-weight="bold">A</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fab fa-android text-yellow-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">Android</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">Android</span>
                 <span class="text-yellow-400 text-lg font-bold">80%</span>
               </div>
             </div>
 
             <!-- iOS -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-yellow)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="240.295" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-yellow)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="240.295" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
+                <text x="50" y="60" text-anchor="middle" fill="#eab308" font-size="24" font-weight="bold">iOS</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fab fa-apple text-yellow-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">iOS</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">iOS</span>
                 <span class="text-yellow-400 text-lg font-bold">15%</span>
               </div>
             </div>
 
             <!-- React Native -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-yellow)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-yellow)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
+                <text x="50" y="58" text-anchor="middle" fill="#eab308" font-size="16" font-weight="bold">RN</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fab fa-react text-yellow-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">React N</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">React Native</span>
                 <span class="text-yellow-400 text-lg font-bold">85%</span>
               </div>
             </div>
 
             <!-- Firebase -->
             <div class="flex flex-col items-center">
-              <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-yellow)" stroke-width="6" 
-                  stroke-dasharray="282.7" stroke-dashoffset="49.47" stroke-linecap="round"
-                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-yellow)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="49.47" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
+                <text x="50" y="60" text-anchor="middle" fill="#eab308" font-size="22" font-weight="bold">🔥</text>
               </svg>
               <div class="text-center mt-3">
-                <div class="flex items-center justify-center gap-2 mb-1">
-                  <i class="fas fa-fire text-yellow-400 text-lg"></i>
-                  <span class="text-white font-medium text-sm">Firebase</span>
-                </div>
+                <span class="text-white font-medium text-sm block mb-1">Firebase</span>
                 <span class="text-yellow-400 text-lg font-bold">82%</span>
               </div>
             </div>
@@ -2434,74 +2660,77 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Communication -->
           <div class="flex flex-col items-center">
-            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+            <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-              <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-pink)" stroke-width="6" 
-                stroke-dasharray="282.7" stroke-dashoffset="28.27" stroke-linecap="round"
-                class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              <g transform="rotate(-90 50 50)">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-pink)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="28.27" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </g>
               <defs>
                 <linearGradient id="gradient-pink" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
                   <stop offset="100%" style="stop-color:#f43f5e;stop-opacity:1" />
                 </linearGradient>
               </defs>
+              <text x="50" y="60" text-anchor="middle" fill="#ec4899" font-size="26" font-weight="bold">💬</text>
             </svg>
             <div class="text-center mt-3">
-              <div class="flex items-center justify-center gap-2 mb-1">
-                <i class="fas fa-comments text-pink-400 text-lg"></i>
-                <span class="text-white font-medium text-sm">Communication</span>
-              </div>
+              <span class="text-white font-medium text-sm block mb-1">Communication</span>
               <span class="text-pink-400 text-lg font-bold">90%</span>
             </div>
           </div>
 
           <!-- Teamwork -->
           <div class="flex flex-col items-center">
-            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+            <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-              <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-pink)" stroke-width="6" 
-                stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
-                class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              <g transform="rotate(-90 50 50)">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-pink)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </g>
+              <text x="50" y="60" text-anchor="middle" fill="#ec4899" font-size="24" font-weight="bold">👥</text>
             </svg>
             <div class="text-center mt-3">
-              <div class="flex items-center justify-center gap-2 mb-1">
-                <i class="fas fa-people-arrows text-pink-400 text-lg"></i>
-                <span class="text-white font-medium text-sm">Teamwork</span>
-              </div>
+              <span class="text-white font-medium text-sm block mb-1">Teamwork</span>
               <span class="text-pink-400 text-lg font-bold">85%</span>
             </div>
           </div>
 
           <!-- Problem Solving -->
           <div class="flex flex-col items-center">
-            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+            <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-              <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-pink)" stroke-width="6" 
-                stroke-dasharray="282.7" stroke-dashoffset="35.34" stroke-linecap="round"
-                class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              <g transform="rotate(-90 50 50)">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-pink)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="35.34" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </g>
+              <text x="50" y="60" text-anchor="middle" fill="#ec4899" font-size="26" font-weight="bold">💡</text>
             </svg>
             <div class="text-center mt-3">
-              <div class="flex items-center justify-center gap-2 mb-1">
-                <i class="fas fa-lightbulb text-pink-400 text-lg"></i>
-                <span class="text-white font-medium text-sm">Problem Solving</span>
-              </div>
+              <span class="text-white font-medium text-sm block mb-1">Problem Solving</span>
               <span class="text-pink-400 text-lg font-bold">88%</span>
             </div>
           </div>
 
           <!-- Time Management -->
           <div class="flex flex-col items-center">
-            <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+            <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
-              <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-pink)" stroke-width="6" 
-                stroke-dasharray="282.7" stroke-dashoffset="37.26" stroke-linecap="round"
-                class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              <g transform="rotate(-90 50 50)">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-pink)" stroke-width="6" 
+                  stroke-dasharray="282.7" stroke-dashoffset="37.26" stroke-linecap="round"
+                  class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+              </g>
+              <circle cx="50" cy="50" r="8" fill="#ec4899"/>
+              <circle cx="50" cy="35" r="3" fill="#ec4899"/>
+              <line x1="50" y1="50" x2="50" y2="35" stroke="#ec4899" stroke-width="2"/>
+              <line x1="50" y1="50" x2="60" y2="50" stroke="#ec4899" stroke-width="2"/>
             </svg>
             <div class="text-center mt-3">
-              <div class="flex items-center justify-center gap-2 mb-1">
-                <i class="fas fa-clock text-pink-400 text-lg"></i>
-                <span class="text-white font-medium text-sm">Time Mgmt</span>
-              </div>
+              <span class="text-white font-medium text-sm block mb-1">Time Mgmt</span>
               <span class="text-pink-400 text-lg font-bold">87%</span>
             </div>
           </div>
