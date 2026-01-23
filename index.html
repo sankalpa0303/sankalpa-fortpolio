@@ -758,102 +758,6 @@
         animation: progressBar 2s ease;
       }
 
-      .skill-progress-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1.2rem;
-      }
-
-      .skill-progress-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem;
-        border-radius: 1.25rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(12px);
-        transition: transform 0.3s ease, border-color 0.3s ease;
-        animation: fadeInUp 0.6s ease-out forwards;
-        opacity: 0;
-      }
-
-      .skill-progress-item:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-
-      .skill-progress-item:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-
-      .skill-progress-item:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-
-      .skill-progress-item:nth-child(4) {
-        animation-delay: 0.4s;
-      }
-
-      .skill-progress-item:nth-child(5) {
-        animation-delay: 0.5s;
-      }
-
-      .skill-progress-item:nth-child(n+6) {
-        animation-delay: 0.6s;
-      }
-
-      .skill-progress-item:hover {
-        transform: translateY(-4px);
-        border-color: rgba(255, 255, 255, 0.15);
-      }
-
-      .progress-circle {
-        --value: 0;
-        --progress-color: #60a5fa;
-        width: 90px;
-        height: 90px;
-        border-radius: 999px;
-        display: grid;
-        place-items: center;
-        background: conic-gradient(
-          var(--progress-color) calc(var(--value) * 3.6deg),
-          rgba(255, 255, 255, 0.08) 0
-        );
-        position: relative;
-        flex-shrink: 0;
-        animation: progressBar 2.5s ease-out forwards;
-      }
-
-      .progress-circle::after {
-        content: "";
-        position: absolute;
-        inset: 12px;
-        border-radius: inherit;
-        background: rgba(6, 11, 25, 0.9);
-        z-index: 1;
-      }
-
-      .progress-circle span {
-        position: relative;
-        z-index: 2;
-        font-weight: 600;
-        color: #e2e8ff;
-        font-size: 0.95rem;
-      }
-
-      body.bg-light-bg .skill-progress-item {
-        background: rgba(15, 23, 42, 0.04);
-        border-color: rgba(15, 23, 42, 0.08);
-      }
-
-      body.bg-light-bg .progress-circle::after {
-        background: rgba(255, 255, 255, 0.85);
-      }
-
-      body.bg-light-bg .progress-circle span {
-        color: #0f172a;
-      }
-
       /* Ultra Transparent Galaxy Effect */
      
       [class*="bg-primary"],
@@ -2072,56 +1976,70 @@
             <h3 class="text-xl font-semibold text-white">Data Science</h3>
           </div>
 
-          <div class="skill-progress-grid">
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 90; --progress-color: #60a5fa"
-              >
-                <span>90%</span>
+          <div class="space-y-5">
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fab fa-python text-blue-400 text-lg"></i>
+                  <span class="text-white text-sm"
+                    >Python (Pandas, SkLearn)</span
+                  >
+                </div>
+                <span class="text-blue-400 text-xs font-medium">90%</span>
               </div>
-              <div>
-                <p class="text-white font-medium">Python</p>
-                <p class="text-gray-400 text-sm">Pandas · SkLearn</p>
-              </div>
-            </div>
-
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 85; --progress-color: #93c5fd"
-              >
-                <span>85%</span>
-              </div>
-              <div>
-                <p class="text-white font-medium">SQL</p>
-                <p class="text-gray-400 text-sm">PostgreSQL · MySQL</p>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                  style="width: 90%"
+                ></div>
               </div>
             </div>
 
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 85; --progress-color: #818cf8"
-              >
-                <span>85%</span>
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-database text-blue-400 text-lg"></i>
+                  <span class="text-white text-sm">SQL</span>
+                </div>
+                <span class="text-blue-400 text-xs font-medium">85%</span>
               </div>
-              <div>
-                <p class="text-white font-medium">Machine Learning</p>
-                <p class="text-gray-400 text-sm">Supervised · ML Ops</p>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                  style="width: 85%"
+                ></div>
               </div>
             </div>
 
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 88; --progress-color: #a5b4fc"
-              >
-                <span>88%</span>
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-brain text-blue-400 text-lg"></i>
+                  <span class="text-white text-sm">Machine Learning</span>
+                </div>
+                <span class="text-blue-400 text-xs font-medium">85%</span>
               </div>
-              <div>
-                <p class="text-white font-medium">Data Visualization</p>
-                <p class="text-gray-400 text-sm">PowerBI · Tableau</p>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                  style="width: 85%"
+                ></div>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-chart-bar text-blue-400 text-lg"></i>
+                  <span class="text-white text-sm">Data Visualization</span>
+                </div>
+                <span class="text-blue-400 text-xs font-medium">88%</span>
+              </div>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                  style="width: 88%"
+                ></div>
               </div>
             </div>
           </div>
@@ -2138,43 +2056,52 @@
             <h3 class="text-xl font-semibold text-white">Tools & Design</h3>
           </div>
 
-          <div class="skill-progress-grid">
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 85; --progress-color: #c084fc"
-              >
-                <span>85%</span>
+          <div class="space-y-5">
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fab fa-figma text-purple-400 text-lg"></i>
+                  <span class="text-white text-sm">Figma</span>
+                </div>
+                <span class="text-purple-400 text-xs font-medium">85%</span>
               </div>
-              <div>
-                <p class="text-white font-medium">Figma</p>
-                <p class="text-gray-400 text-sm">Wireframes · Prototypes</p>
-              </div>
-            </div>
-
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 80; --progress-color: #d946ef"
-              >
-                <span>80%</span>
-              </div>
-              <div>
-                <p class="text-white font-medium">Git / GitHub</p>
-                <p class="text-gray-400 text-sm">Collab · CI/CD</p>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                  style="width: 85%"
+                ></div>
               </div>
             </div>
 
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 75; --progress-color: #ec4899"
-              >
-                <span>75%</span>
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fab fa-github text-purple-400 text-lg"></i>
+                  <span class="text-white text-sm">GitHub</span>
+                </div>
+                <span class="text-purple-400 text-xs font-medium">80%</span>
               </div>
-              <div>
-                <p class="text-white font-medium">Java</p>
-                <p class="text-gray-400 text-sm">Spring · OOP</p>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                  style="width: 80%"
+                ></div>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fab fa-java text-purple-400 text-lg"></i>
+                  <span class="text-white text-sm">Java</span>
+                </div>
+                <span class="text-purple-400 text-xs font-medium">75%</span>
+              </div>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                  style="width: 75%"
+                ></div>
               </div>
             </div>
           </div>
@@ -2191,56 +2118,68 @@
             <h3 class="text-xl font-semibold text-white">Web Development</h3>
           </div>
 
-          <div class="skill-progress-grid">
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 90; --progress-color: #34d399"
-              >
-                <span>90%</span>
+          <div class="space-y-5">
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fab fa-html5 text-green-400 text-lg"></i>
+                  <span class="text-white text-sm">HTML / CSS</span>
+                </div>
+                <span class="text-green-400 text-xs font-medium">90%</span>
               </div>
-              <div>
-                <p class="text-white font-medium">HTML · CSS</p>
-                <p class="text-gray-400 text-sm">Responsive · Tailwind</p>
-              </div>
-            </div>
-
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 85; --progress-color: #2dd4bf"
-              >
-                <span>85%</span>
-              </div>
-              <div>
-                <p class="text-white font-medium">JavaScript</p>
-                <p class="text-gray-400 text-sm">ES6 · DOM</p>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
+                  style="width: 90%"
+                ></div>
               </div>
             </div>
 
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 80; --progress-color: #14b8a6"
-              >
-                <span>80%</span>
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fab fa-js text-green-400 text-lg"></i>
+                  <span class="text-white text-sm">JavaScript</span>
+                </div>
+                <span class="text-green-400 text-xs font-medium">85%</span>
               </div>
-              <div>
-                <p class="text-white font-medium">PHP</p>
-                <p class="text-gray-400 text-sm">REST · MVC</p>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
+                  style="width: 85%"
+                ></div>
               </div>
             </div>
 
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 85; --progress-color: #06b6d4"
-              >
-                <span>85%</span>
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fab fa-php text-green-400 text-lg"></i>
+                  <span class="text-white text-sm">PHP</span>
+                </div>
+                <span class="text-green-400 text-xs font-medium">80%</span>
               </div>
-              <div>
-                <p class="text-white font-medium">MERN Stack</p>
-                <p class="text-gray-400 text-sm">React · Node</p>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
+                  style="width: 80%"
+                ></div>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fab fa-react text-green-400 text-lg"></i>
+                  <span class="text-white text-sm">MERN Stack</span>
+                </div>
+                <span class="text-green-400 text-xs font-medium">85%</span>
+              </div>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
+                  style="width: 85%"
+                ></div>
               </div>
             </div>
           </div>
@@ -2259,56 +2198,68 @@
             </h3>
           </div>
 
-          <div class="skill-progress-grid">
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 80; --progress-color: #fbbf24"
-              >
-                <span>80%</span>
+          <div class="space-y-5">
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fab fa-android text-yellow-400 text-lg"></i>
+                  <span class="text-white text-sm">Android (Java/Kotlin)</span>
+                </div>
+                <span class="text-yellow-400 text-xs font-medium">80%</span>
               </div>
-              <div>
-                <p class="text-white font-medium">Android</p>
-                <p class="text-gray-400 text-sm">Java · Kotlin</p>
-              </div>
-            </div>
-
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 15; --progress-color: #f97316"
-              >
-                <span>15%</span>
-              </div>
-              <div>
-                <p class="text-white font-medium">iOS</p>
-                <p class="text-gray-400 text-sm">Swift UI Basics</p>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
+                  style="width: 80%"
+                ></div>
               </div>
             </div>
 
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 85; --progress-color: #fb923c"
-              >
-                <span>85%</span>
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fab fa-apple text-yellow-400 text-lg"></i>
+                  <span class="text-white text-sm">iOS Development</span>
+                </div>
+                <span class="text-yellow-400 text-xs font-medium">15%</span>
               </div>
-              <div>
-                <p class="text-white font-medium">React Native</p>
-                <p class="text-gray-400 text-sm">Expo · Hooks</p>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
+                  style="width: 15%"
+                ></div>
               </div>
             </div>
 
-            <div class="skill-progress-item">
-              <div
-                class="progress-circle"
-                style="--value: 82; --progress-color: #facc15"
-              >
-                <span>82%</span>
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fab fa-react text-yellow-400 text-lg"></i>
+                  <span class="text-white text-sm">React Native</span>
+                </div>
+                <span class="text-yellow-400 text-xs font-medium">85%</span>
               </div>
-              <div>
-                <p class="text-white font-medium">Firebase</p>
-                <p class="text-gray-400 text-sm">Auth · Firestore</p>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
+                  style="width: 85%"
+                ></div>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-fire text-yellow-400 text-lg"></i>
+                  <span class="text-white text-sm">Firebase</span>
+                </div>
+                <span class="text-yellow-400 text-xs font-medium">82%</span>
+              </div>
+              <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
+                  style="width: 82%"
+                ></div>
               </div>
             </div>
           </div>
@@ -2326,56 +2277,68 @@
           <h3 class="text-xl font-semibold text-white">Soft Skills</h3>
         </div>
 
-        <div class="skill-progress-grid">
-          <div class="skill-progress-item">
-            <div
-              class="progress-circle"
-              style="--value: 90; --progress-color: #fb7185"
-            >
-              <span>90%</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="relative">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-comments text-pink-400 text-lg"></i>
+                <span class="text-white text-sm">Communication</span>
+              </div>
+              <span class="text-pink-400 text-xs font-medium">90%</span>
             </div>
-            <div>
-              <p class="text-white font-medium">Communication</p>
-              <p class="text-gray-400 text-sm">Facilitation · Storytelling</p>
-            </div>
-          </div>
-
-          <div class="skill-progress-item">
-            <div
-              class="progress-circle"
-              style="--value: 85; --progress-color: #f472b6"
-            >
-              <span>85%</span>
-            </div>
-            <div>
-              <p class="text-white font-medium">Teamwork</p>
-              <p class="text-gray-400 text-sm">Mentoring · Sync</p>
+            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+              <div
+                class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"
+                style="width: 90%"
+              ></div>
             </div>
           </div>
 
-          <div class="skill-progress-item">
-            <div
-              class="progress-circle"
-              style="--value: 88; --progress-color: #ec4899"
-            >
-              <span>88%</span>
+          <div class="relative">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-people-arrows text-pink-400 text-lg"></i>
+                <span class="text-white text-sm">Teamwork</span>
+              </div>
+              <span class="text-pink-400 text-xs font-medium">85%</span>
             </div>
-            <div>
-              <p class="text-white font-medium">Problem Solving</p>
-              <p class="text-gray-400 text-sm">Critical Thinking</p>
+            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+              <div
+                class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"
+                style="width: 85%"
+              ></div>
             </div>
           </div>
 
-          <div class="skill-progress-item">
-            <div
-              class="progress-circle"
-              style="--value: 87; --progress-color: #db2777"
-            >
-              <span>87%</span>
+          <div class="relative">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-lightbulb text-pink-400 text-lg"></i>
+                <span class="text-white text-sm">Problem Solving</span>
+              </div>
+              <span class="text-pink-400 text-xs font-medium">88%</span>
             </div>
-            <div>
-              <p class="text-white font-medium">Time Management</p>
-              <p class="text-gray-400 text-sm">Prioritization</p>
+            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+              <div
+                class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"
+                style="width: 88%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-clock text-pink-400 text-lg"></i>
+                <span class="text-white text-sm">Time Management</span>
+              </div>
+              <span class="text-pink-400 text-xs font-medium">87%</span>
+            </div>
+            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+              <div
+                class="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"
+                style="width: 87%"
+              ></div>
             </div>
           </div>
         </div>
@@ -2460,6 +2423,7 @@
                 <i class="fas fa-external-link-alt mr-1"></i> Demo
               </a>
             </div>
+          </div>
         </div>
 
         <!-- Project 2 -->
