@@ -63,6 +63,8 @@
               progressBar: "progressBar 2s ease",
               typing: "typing 3.5s steps(40, end)",
               blink: "blink 1s step-end infinite",
+              skillLoad: "skillLoad 0.6s ease-out forwards",
+              skillPulse: "skillPulse 2s ease-in-out infinite",
             },
             keyframes: {
               float: {
@@ -91,6 +93,14 @@
               blink: {
                 "from, to": { "border-color": "transparent" },
                 "50%": { "border-color": "rgba(78, 205, 196, 0.8)" },
+              },
+              skillLoad: {
+                from: { opacity: "0", transform: "scale(0.95) translateY(20px)" },
+                to: { opacity: "1", transform: "scale(1) translateY(0)" },
+              },
+              skillPulse: {
+                "0%, 100%": { opacity: "1" },
+                "50%": { opacity: "0.8" },
               },
             },
           },
@@ -1865,151 +1875,152 @@
         </span>
       </h2>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 relative z-10">
-        <!-- Leadership & Activities -->
-        <div
-          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(59,130,246,0.15)]"
-        >
-          <div class="flex items-center gap-3 mb-6">
-            <div class="bg-blue-500/20 p-3 rounded-xl">
-              <i class="fas fa-users text-blue-400 text-xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-white">
-              Leadership & Activities
-            </h3>
-          </div>
-
-          <div class="space-y-6">
-            <div class="relative pl-6 border-l-2 border-blue-500/30">
-              <div
-                class="absolute -left-[9px] top-0 w-4 h-4 bg-blue-500 rounded-full border-4 border-gray-900"
-              ></div>
-              <h4 class="text-base font-semibold text-white">
+      <!-- Leadership & Activities -->
+      <div class="mb-16 relative z-10">
+        <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+          <div class="w-1 h-8 bg-gradient-to-b from-blue-400 to-blue-600 rounded-full"></div>
+          Leadership & Activities
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Item 1 -->
+          <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-600/5 border border-blue-500/20 p-6 transition-all duration-300 hover:border-blue-500/40 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:translate-y-[-4px]">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center mb-4">
+                <i class="fas fa-handshake text-blue-400"></i>
+              </div>
+              <h4 class="text-base font-semibold text-white mb-2">
                 Volunteer, IEEE Student Chapter
               </h4>
-              <p class="text-gray-300 text-xs mt-1">
+              <p class="text-gray-400 text-sm">
                 Supported campus-wide tech events and mentoring circles.
               </p>
             </div>
+          </div>
 
-            <div class="relative pl-6 border-l-2 border-indigo-500/30">
-              <div
-                class="absolute -left-[9px] top-0 w-4 h-4 bg-indigo-500 rounded-full border-4 border-gray-900"
-              ></div>
-              <div
-                class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2"
-              >
+          <!-- Item 2 -->
+          <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-indigo-500/10 to-indigo-600/5 border border-indigo-500/20 p-6 transition-all duration-300 hover:border-indigo-500/40 hover:shadow-[0_0_20px_rgba(99,102,241,0.2)] hover:translate-y-[-4px]">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center mb-4">
+                <i class="fas fa-rocket text-indigo-400"></i>
+              </div>
+              <div class="flex justify-between items-start gap-2 mb-2">
                 <h4 class="text-base font-semibold text-white">
                   Participant, 2024 Hackathon
                 </h4>
-                <span
-                  class="px-2 py-1 bg-indigo-500/10 text-indigo-400 text-xs font-medium rounded-full"
-                  >2024</span
-                >
+                <span class="px-2 py-0.5 bg-indigo-500/20 text-indigo-300 text-xs font-medium rounded-full whitespace-nowrap">2024</span>
               </div>
-              <p class="text-gray-300 text-xs mt-1">
+              <p class="text-gray-400 text-sm">
                 Collaborated on rapid prototyping of data-driven solutions.
               </p>
             </div>
+          </div>
 
-            <div class="relative pl-6 border-l-2 border-cyan-500/30">
-              <div
-                class="absolute -left-[9px] top-0 w-4 h-4 bg-cyan-500 rounded-full border-4 border-gray-900"
-              ></div>
-              <h4 class="text-base font-semibold text-white">
+          <!-- Item 3 -->
+          <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-cyan-500/10 to-cyan-600/5 border border-cyan-500/20 p-6 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:translate-y-[-4px]">
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-4">
+                <i class="fas fa-chalkboard-user text-cyan-400"></i>
+              </div>
+              <h4 class="text-base font-semibold text-white mb-2">
                 Organized Data Bootcamp
               </h4>
-              <p class="text-gray-300 text-xs mt-1">
+              <p class="text-gray-400 text-sm">
                 Led logistics and curriculum flow for 50+ aspiring analysts.
               </p>
             </div>
+          </div>
 
-            <div class="relative pl-6 border-l-2 border-emerald-500/30">
-              <div
-                class="absolute -left-[9px] top-0 w-4 h-4 bg-emerald-500 rounded-full border-4 border-gray-900"
-              ></div>
-              <h4 class="text-base font-semibold text-white">
+          <!-- Item 4 -->
+          <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 border border-emerald-500/20 p-6 transition-all duration-300 hover:border-emerald-500/40 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:translate-y-[-4px]">
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center mb-4">
+                <i class="fas fa-cricket text-emerald-400"></i>
+              </div>
+              <h4 class="text-base font-semibold text-white mb-2">
                 Member, SLIIT Cricket Team
               </h4>
-              <p class="text-gray-300 text-xs mt-1">
+              <p class="text-gray-400 text-sm">
                 Represented university cricket squad in interfaculty matches.
               </p>
             </div>
+          </div>
 
-            <div class="relative pl-6 border-l-2 border-yellow-500/30">
-              <div
-                class="absolute -left-[9px] top-0 w-4 h-4 bg-yellow-500 rounded-full border-4 border-gray-900"
-              ></div>
-              <h4 class="text-base font-semibold text-white">
+          <!-- Item 5 -->
+          <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-yellow-500/10 to-yellow-600/5 border border-yellow-500/20 p-6 transition-all duration-300 hover:border-yellow-500/40 hover:shadow-[0_0_20px_rgba(234,179,8,0.2)] hover:translate-y-[-4px]">
+            <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center mb-4">
+                <i class="fas fa-music text-yellow-400"></i>
+              </div>
+              <h4 class="text-base font-semibold text-white mb-2">
                 Member, School Cadet Band
               </h4>
-              <p class="text-gray-300 text-xs mt-1">
-                Performed in ceremonial events showcasing discipline and
-                teamwork.
+              <p class="text-gray-400 text-sm">
+                Performed in ceremonial events showcasing discipline and teamwork.
               </p>
             </div>
+          </div>
 
-            <div class="relative pl-6 border-l-2 border-orange-500/30">
-              <div
-                class="absolute -left-[9px] top-0 w-4 h-4 bg-orange-500 rounded-full border-4 border-gray-900"
-              ></div>
-              <h4 class="text-base font-semibold text-white">
+          <!-- Item 6 -->
+          <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-orange-500/10 to-orange-600/5 border border-orange-500/20 p-6 transition-all duration-300 hover:border-orange-500/40 hover:shadow-[0_0_20px_rgba(249,115,22,0.2)] hover:translate-y-[-4px]">
+            <div class="absolute inset-0 bg-gradient-to-br from-orange-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center mb-4">
+                <i class="fas fa-crown text-orange-400"></i>
+              </div>
+              <h4 class="text-base font-semibold text-white mb-2">
                 School Cricket Team Captain
               </h4>
-              <p class="text-gray-300 text-xs mt-1">
-                Guided the team through zonal tournaments emphasizing strategy
-                and morale.
+              <p class="text-gray-400 text-sm">
+                Guided the team through zonal tournaments emphasizing strategy and morale.
               </p>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Achievements -->
-        <div
-          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(251,191,36,0.15)]"
-        >
-          <div class="flex items-center gap-3 mb-6">
-            <div class="bg-yellow-500/20 p-3 rounded-xl">
-              <i class="fas fa-trophy text-yellow-400 text-xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-white">Key Achievements</h3>
-          </div>
-
-          <div class="space-y-6">
-            <div class="relative pl-6 border-l-2 border-yellow-500/30">
-              <div
-                class="absolute -left-[9px] top-0 w-4 h-4 bg-yellow-500 rounded-full border-4 border-gray-900"
-              ></div>
-              <div
-                class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2"
-              >
+      <!-- Achievements -->
+      <div class="relative z-10">
+        <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+          <div class="w-1 h-8 bg-gradient-to-b from-yellow-400 to-yellow-600 rounded-full"></div>
+          Key Achievements
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Achievement 1 -->
+          <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-yellow-500/10 to-yellow-600/5 border border-yellow-500/20 p-6 transition-all duration-300 hover:border-yellow-500/40 hover:shadow-[0_0_20px_rgba(234,179,8,0.2)] hover:translate-y-[-4px]">
+            <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center mb-4">
+                <i class="fas fa-medal text-yellow-400"></i>
+              </div>
+              <div class="flex justify-between items-start gap-2 mb-2">
                 <h4 class="text-base font-semibold text-white">
                   Cricket Certification
                 </h4>
-                <span
-                  class="px-2 py-1 bg-yellow-500/10 text-yellow-400 text-xs font-medium rounded-full"
-                  >2017</span
-                >
+                <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-300 text-xs font-medium rounded-full whitespace-nowrap">2017</span>
               </div>
-              <p class="text-gray-300 text-xs mt-1">
+              <p class="text-gray-400 text-sm">
                 Awarded Super Merit for outstanding cricket performance.
               </p>
             </div>
+          </div>
 
-            <div class="relative pl-6 border-l-2 border-rose-500/30">
-              <div
-                class="absolute -left-[9px] top-0 w-4 h-4 bg-rose-500 rounded-full border-4 border-gray-900"
-              ></div>
-              <div
-                class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2"
-              >
-                <h4 class="text-base font-semibold text-white">Athletics</h4>
-                <span
-                  class="px-2 py-1 bg-rose-500/10 text-rose-300 text-xs font-medium rounded-full"
-                  >Zonal Meet</span
-                >
+          <!-- Achievement 2 -->
+          <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-rose-500/10 to-rose-600/5 border border-rose-500/20 p-6 transition-all duration-300 hover:border-rose-500/40 hover:shadow-[0_0_20px_rgba(244,63,94,0.2)] hover:translate-y-[-4px]">
+            <div class="absolute inset-0 bg-gradient-to-br from-rose-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-lg bg-rose-500/20 flex items-center justify-center mb-4">
+                <i class="fas fa-person-running text-rose-400"></i>
               </div>
-              <p class="text-gray-300 text-xs mt-1">
+              <div class="flex justify-between items-start gap-2 mb-2">
+                <h4 class="text-base font-semibold text-white">Athletics</h4>
+                <span class="px-2 py-0.5 bg-rose-500/20 text-rose-300 text-xs font-medium rounded-full whitespace-nowrap">Zonal Meet</span>
+              </div>
+              <p class="text-gray-400 text-sm">
                 Secured 3rd place in Long Jump at the Zonal Sports Meet.
               </p>
             </div>
@@ -2312,7 +2323,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Data Science -->
         <div
-          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)]"
+          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          style="animation-delay: 0.1s;"
         >
           <div class="flex items-center gap-3 mb-8">
             <div class="bg-blue-500/20 p-3 rounded-xl">
@@ -2337,7 +2349,11 @@
                     <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
                   </linearGradient>
                 </defs>
-                <text x="50" y="60" text-anchor="middle" fill="#3b82f6" font-size="32" font-weight="bold" class="font-awesome-icon">⦿</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fab fa-python" style="font-size: 24px; color: #3b82f6;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">Python</span>
@@ -2354,7 +2370,11 @@
                     stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
                     class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
                 </g>
-                <text x="50" y="60" text-anchor="middle" fill="#3b82f6" font-size="28" font-weight="bold">DB</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fas fa-database" style="font-size: 24px; color: #3b82f6;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">SQL</span>
@@ -2366,12 +2386,19 @@
             <div class="flex flex-col items-center">
               <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
                 <g transform="rotate(-90 50 50)">
                   <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-blue)" stroke-width="6" 
                     stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
                     class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
                 </g>
-                <text x="50" y="60" text-anchor="middle" fill="#3b82f6" font-size="24" font-weight="bold">ML</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fas fa-brain" style="font-size: 24px; color: #3b82f6;"></i>
+                  </div>
+                </foreignObject>
+              </svg>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">ML</span>
@@ -2388,7 +2415,11 @@
                     stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
                     class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
                 </g>
-                <text x="50" y="60" text-anchor="middle" fill="#3b82f6" font-size="32" font-weight="bold">R</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fab fa-r-project" style="font-size: 24px; color: #3b82f6;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">R</span>
@@ -2400,7 +2431,8 @@
 
         <!-- Tools & Design -->
         <div
-          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)]"
+          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          style="animation-delay: 0.2s;"
         >
           <div class="flex items-center gap-3 mb-8">
             <div class="bg-purple-500/20 p-3 rounded-xl">
@@ -2425,7 +2457,11 @@
                     <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
                   </linearGradient>
                 </defs>
-                <circle cx="50" cy="50" r="12" fill="#a855f7" opacity="0.8"/>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fab fa-figma" style="font-size: 24px; color: #a855f7;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">Figma</span>
@@ -2442,7 +2478,11 @@
                     stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
                     class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
                 </g>
-                <text x="50" y="60" text-anchor="middle" fill="#a855f7" font-size="28" font-weight="bold">⚙</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fab fa-github" style="font-size: 24px; color: #a855f7;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">GitHub</span>
@@ -2459,11 +2499,36 @@
                     stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
                     class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
                 </g>
-                <text x="50" y="60" text-anchor="middle" fill="#a855f7" font-size="28" font-weight="bold">📊</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fas fa-chart-pie" style="font-size: 24px; color: #a855f7;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">Power BI</span>
                 <span class="text-purple-400 text-lg font-bold">85%</span>
+              </div>
+            </div>
+
+            <!-- Tailwind CSS -->
+            <div class="flex flex-col items-center">
+              <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 116, 139, 0.5)" stroke-width="6"/>
+                <g transform="rotate(-90 50 50)">
+                  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient-purple)" stroke-width="6" 
+                    stroke-dasharray="282.7" stroke-dashoffset="49.47" stroke-linecap="round"
+                    class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
+                </g>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fas fa-palette" style="font-size: 24px; color: #a855f7;"></i>
+                  </div>
+                </foreignObject>
+              </svg>
+              <div class="text-center mt-3">
+                <span class="text-white font-medium text-sm block mb-1">Tailwind</span>
+                <span class="text-purple-400 text-lg font-bold">82%</span>
               </div>
             </div>
           </div>
@@ -2471,7 +2536,8 @@
 
         <!-- Web Development -->
         <div
-          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)]"
+          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          style="animation-delay: 0.3s;"
         >
           <div class="flex items-center gap-3 mb-8">
             <div class="bg-green-500/20 p-3 rounded-xl">
@@ -2496,7 +2562,11 @@
                     <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
                   </linearGradient>
                 </defs>
-                <text x="50" y="60" text-anchor="middle" fill="#22c55e" font-size="24" font-weight="bold">&lt;&gt;</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fab fa-html5" style="font-size: 24px; color: #22c55e;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">HTML</span>
@@ -2513,7 +2583,11 @@
                     stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
                     class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
                 </g>
-                <text x="50" y="60" text-anchor="middle" fill="#22c55e" font-size="26" font-weight="bold">JS</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fab fa-js" style="font-size: 24px; color: #22c55e;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">JS</span>
@@ -2530,7 +2604,11 @@
                     stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-linecap="round"
                     class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
                 </g>
-                <text x="50" y="60" text-anchor="middle" fill="#22c55e" font-size="26" font-weight="bold">PHP</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fab fa-php" style="font-size: 24px; color: #22c55e;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">PHP</span>
@@ -2547,7 +2625,11 @@
                     stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
                     class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
                 </g>
-                <text x="50" y="62" text-anchor="middle" fill="#22c55e" font-size="18" font-weight="bold">MERN</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fab fa-react" style="font-size: 24px; color: #22c55e;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">MERN</span>
@@ -2559,7 +2641,8 @@
 
         <!-- Mobile Development -->
         <div
-          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)]"
+          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          style="animation-delay: 0.4s;"
         >
           <div class="flex items-center gap-3 mb-8">
             <div class="bg-yellow-500/20 p-3 rounded-xl">
@@ -2584,7 +2667,11 @@
                     <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
                   </linearGradient>
                 </defs>
-                <text x="50" y="60" text-anchor="middle" fill="#eab308" font-size="22" font-weight="bold">A</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fab fa-android" style="font-size: 24px; color: #eab308;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">Android</span>
@@ -2601,7 +2688,11 @@
                     stroke-dasharray="282.7" stroke-dashoffset="240.295" stroke-linecap="round"
                     class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
                 </g>
-                <text x="50" y="60" text-anchor="middle" fill="#eab308" font-size="24" font-weight="bold">iOS</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fab fa-apple" style="font-size: 24px; color: #eab308;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">iOS</span>
@@ -2618,7 +2709,11 @@
                     stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
                     class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
                 </g>
-                <text x="50" y="58" text-anchor="middle" fill="#eab308" font-size="16" font-weight="bold">RN</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fab fa-react" style="font-size: 24px; color: #eab308;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">React Native</span>
@@ -2635,7 +2730,11 @@
                     stroke-dasharray="282.7" stroke-dashoffset="49.47" stroke-linecap="round"
                     class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
                 </g>
-                <text x="50" y="60" text-anchor="middle" fill="#eab308" font-size="22" font-weight="bold">🔥</text>
+                <foreignObject x="35" y="35" width="30" height="30">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <i class="fas fa-fire" style="font-size: 24px; color: #eab308;"></i>
+                  </div>
+                </foreignObject>
               </svg>
               <div class="text-center mt-3">
                 <span class="text-white font-medium text-sm block mb-1">Firebase</span>
@@ -2648,7 +2747,8 @@
 
       <!-- Soft Skills -->
       <div
-        class="glass rounded-2xl p-6 mt-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)]"
+        class="glass rounded-2xl p-6 mt-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+        style="animation-delay: 0.5s;"
       >
         <div class="flex items-center gap-3 mb-8">
           <div class="bg-pink-500/20 p-3 rounded-xl">
@@ -2673,7 +2773,11 @@
                   <stop offset="100%" style="stop-color:#f43f5e;stop-opacity:1" />
                 </linearGradient>
               </defs>
-              <text x="50" y="60" text-anchor="middle" fill="#ec4899" font-size="26" font-weight="bold">💬</text>
+              <foreignObject x="35" y="35" width="30" height="30">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                  <i class="fas fa-comment" style="font-size: 24px; color: #ec4899;"></i>
+                </div>
+              </foreignObject>
             </svg>
             <div class="text-center mt-3">
               <span class="text-white font-medium text-sm block mb-1">Communication</span>
@@ -2690,7 +2794,11 @@
                   stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round"
                   class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
               </g>
-              <text x="50" y="60" text-anchor="middle" fill="#ec4899" font-size="24" font-weight="bold">👥</text>
+              <foreignObject x="35" y="35" width="30" height="30">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                  <i class="fas fa-users" style="font-size: 24px; color: #ec4899;"></i>
+                </div>
+              </foreignObject>
             </svg>
             <div class="text-center mt-3">
               <span class="text-white font-medium text-sm block mb-1">Teamwork</span>
@@ -2707,7 +2815,11 @@
                   stroke-dasharray="282.7" stroke-dashoffset="35.34" stroke-linecap="round"
                   class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
               </g>
-              <text x="50" y="60" text-anchor="middle" fill="#ec4899" font-size="26" font-weight="bold">💡</text>
+              <foreignObject x="35" y="35" width="30" height="30">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                  <i class="fas fa-lightbulb" style="font-size: 24px; color: #ec4899;"></i>
+                </div>
+              </foreignObject>
             </svg>
             <div class="text-center mt-3">
               <span class="text-white font-medium text-sm block mb-1">Problem Solving</span>
@@ -2724,10 +2836,11 @@
                   stroke-dasharray="282.7" stroke-dashoffset="37.26" stroke-linecap="round"
                   class="skill-progress animate-skillCircle" style="transition: stroke-dashoffset 1s ease-in-out;"/>
               </g>
-              <circle cx="50" cy="50" r="8" fill="#ec4899"/>
-              <circle cx="50" cy="35" r="3" fill="#ec4899"/>
-              <line x1="50" y1="50" x2="50" y2="35" stroke="#ec4899" stroke-width="2"/>
-              <line x1="50" y1="50" x2="60" y2="50" stroke="#ec4899" stroke-width="2"/>
+              <foreignObject x="35" y="35" width="30" height="30">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                  <i class="fas fa-clock" style="font-size: 24px; color: #ec4899;"></i>
+                </div>
+              </foreignObject>
             </svg>
             <div class="text-center mt-3">
               <span class="text-white font-medium text-sm block mb-1">Time Mgmt</span>
