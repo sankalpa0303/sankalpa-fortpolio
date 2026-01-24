@@ -1442,6 +1442,7 @@
       }
 
       .skill-category.hidden {
+        display: none !important;
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
@@ -4123,30 +4124,34 @@
       });
 
       // Skills Filter Functionality
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const skillCategories = document.querySelectorAll('.skill-category');
+      document.addEventListener('DOMContentLoaded', function() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const skillCategories = document.querySelectorAll('.skill-category');
 
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const filterValue = this.getAttribute('data-filter');
-          
-          // Update active button styling
-          filterBtns.forEach(b => {
-            b.classList.remove('filter-active', 'bg-blue-500/20', 'text-blue-300');
-            b.classList.add('bg-white/10', 'text-white');
-          });
-          this.classList.remove('bg-white/10', 'text-white');
-          this.classList.add('filter-active', 'bg-blue-500/20', 'text-blue-300');
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const filterValue = this.getAttribute('data-filter');
+            
+            // Update active button styling
+            filterBtns.forEach(b => {
+              b.classList.remove('filter-active', 'bg-blue-500/20', 'text-blue-300');
+              b.classList.add('bg-white/10', 'text-white');
+            });
+            this.classList.remove('bg-white/10', 'text-white');
+            this.classList.add('filter-active', 'bg-blue-500/20', 'text-blue-300');
 
-          // Filter skill categories using CSS classes
-          skillCategories.forEach(category => {
-            const categoryName = category.getAttribute('data-category');
-            if (filterValue === 'all' || categoryName === filterValue) {
-              category.classList.remove('hidden');
-            } else {
-              category.classList.add('hidden');
-            }
+            // Filter skill categories using CSS classes
+            skillCategories.forEach(category => {
+              const categoryName = category.getAttribute('data-category');
+              if (filterValue === 'all' || categoryName === filterValue) {
+                category.classList.remove('hidden');
+                category.style.display = '';
+              } else {
+                category.classList.add('hidden');
+                category.style.display = 'none';
+              }
+            });
           });
         });
       });
