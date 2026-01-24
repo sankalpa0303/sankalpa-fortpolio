@@ -1433,6 +1433,19 @@
           padding: 0.65rem 1rem;
         }
       }
+
+      /* Skill Category Filter Styles */
+      .skill-category {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .skill-category.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
     </style>
   </head>
   <body
@@ -2320,10 +2333,33 @@
         <span class="section-title__text">Skills & Expertise</span>
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap gap-3 mb-8 justify-center">
+        <button class="filter-btn filter-active px-6 py-2 rounded-full bg-blue-500/20 text-blue-300 font-medium transition-all duration-300 hover:bg-blue-500/30" data-filter="all">
+          <i class="fas fa-th mr-2"></i>All Skills
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20" data-filter="data-science">
+          <i class="fas fa-chart-line mr-2"></i>Data Science
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20" data-filter="tools-design">
+          <i class="fas fa-tools mr-2"></i>Tools & Design
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20" data-filter="web-dev">
+          <i class="fas fa-code mr-2"></i>Web Development
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20" data-filter="mobile-dev">
+          <i class="fas fa-mobile-alt mr-2"></i>Mobile Development
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20" data-filter="soft-skills">
+          <i class="fas fa-heart mr-2"></i>Soft Skills
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 skill-grid">
         <!-- Data Science -->
         <div
-          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          class="skill-category glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          data-category="data-science"
           style="animation-delay: 0.1s;"
         >
           <div class="flex items-center gap-3 mb-8">
@@ -2431,7 +2467,8 @@
 
         <!-- Tools & Design -->
         <div
-          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          class="skill-category glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          data-category="tools-design"
           style="animation-delay: 0.2s;"
         >
           <div class="flex items-center gap-3 mb-8">
@@ -2536,7 +2573,8 @@
 
         <!-- Web Development -->
         <div
-          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          class="skill-category glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          data-category="web-dev"
           style="animation-delay: 0.3s;"
         >
           <div class="flex items-center gap-3 mb-8">
@@ -2641,7 +2679,8 @@
 
         <!-- Mobile Development -->
         <div
-          class="glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          class="skill-category glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          data-category="mobile-dev"
           style="animation-delay: 0.4s;"
         >
           <div class="flex items-center gap-3 mb-8">
@@ -2743,13 +2782,13 @@
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Soft Skills -->
-      <div
-        class="glass rounded-2xl p-6 mt-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
-        style="animation-delay: 0.5s;"
-      >
+        <!-- Soft Skills -->
+        <div
+          class="skill-category glass rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,200,0.15)] animate-skillLoad"
+          data-category="soft-skills"
+          style="animation-delay: 0.5s;"
+        >
         <div class="flex items-center gap-3 mb-8">
           <div class="bg-pink-500/20 p-3 rounded-xl">
             <i class="fas fa-users text-pink-400 text-xl"></i>
@@ -3546,7 +3585,7 @@
                 class="contact-item flex items-center gap-6 p-4 rounded-xl transition-all duration-300 hover:bg-white/5"
               >
                 <div
-                  class="contact-icon w-12 h-12 bg-gradient-1 rounded-full flex items-center justify-center shadow-md shadow-primary/30"
+                  class="contact-icon w-12 h-12 rounded-full flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);"
                 >
                   <i class="fas fa-envelope text-white text-xl"></i>
                 </div>
@@ -3566,7 +3605,7 @@
                 class="contact-item flex items-center gap-6 p-4 rounded-xl transition-all duration-300 hover:bg-white/5"
               >
                 <div
-                  class="contact-icon w-12 h-12 bg-gradient-1 rounded-full flex items-center justify-center shadow-md shadow-primary/30"
+                  class="contact-icon w-12 h-12 rounded-full flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, #0a66c2 0%, #004182 100%); box-shadow: 0 0 20px rgba(10, 102, 194, 0.4);"
                 >
                   <i class="fab fa-linkedin text-white text-xl"></i>
                 </div>
@@ -3586,7 +3625,7 @@
                 class="contact-item flex items-center gap-6 p-4 rounded-xl transition-all duration-300 hover:bg-white/5"
               >
                 <div
-                  class="contact-icon w-12 h-12 bg-gradient-1 rounded-full flex items-center justify-center shadow-md shadow-primary/30"
+                  class="contact-icon w-12 h-12 rounded-full flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, #333333 0%, #1a1a1a 100%); box-shadow: 0 0 20px rgba(51, 51, 51, 0.4);"
                 >
                   <i class="fab fa-github text-white text-xl"></i>
                 </div>
@@ -3606,7 +3645,7 @@
                 class="contact-item flex items-center gap-6 p-4 rounded-xl transition-all duration-300 hover:bg-white/5"
               >
                 <div
-                  class="contact-icon w-12 h-12 bg-gradient-1 rounded-full flex items-center justify-center shadow-md shadow-primary/30"
+                  class="contact-icon w-12 h-12 rounded-full flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);"
                 >
                   <i class="fab fa-whatsapp text-white text-xl"></i>
                 </div>
@@ -4081,6 +4120,35 @@
       document.querySelectorAll("a[href]").forEach((anchor) => {
         anchor.setAttribute("target", "_blank");
         anchor.setAttribute("rel", "noopener noreferrer");
+      });
+
+      // Skills Filter Functionality
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const skillCategories = document.querySelectorAll('.skill-category');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const filterValue = this.getAttribute('data-filter');
+          
+          // Update active button styling
+          filterBtns.forEach(b => {
+            b.classList.remove('filter-active', 'bg-blue-500/20', 'text-blue-300');
+            b.classList.add('bg-white/10', 'text-white');
+          });
+          this.classList.remove('bg-white/10', 'text-white');
+          this.classList.add('filter-active', 'bg-blue-500/20', 'text-blue-300');
+
+          // Filter skill categories using CSS classes
+          skillCategories.forEach(category => {
+            const categoryName = category.getAttribute('data-category');
+            if (filterValue === 'all' || categoryName === filterValue) {
+              category.classList.remove('hidden');
+            } else {
+              category.classList.add('hidden');
+            }
+          });
+        });
       });
 
       // Console Messages
