@@ -400,6 +400,49 @@ body.bg-light-bg footer {
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+.contact-icon {
+  position: relative;
+  background: linear-gradient(135deg, rgba(125, 211, 252, 0.3), rgba(167, 139, 250, 0.28), rgba(244, 114, 182, 0.3));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+
+.contact-icon::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(14, 165, 233, 0.24), rgba(168, 85, 247, 0.22));
+  filter: blur(12px);
+  opacity: 0.65;
+  z-index: -1;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.contact-icon:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.contact-icon:hover::after {
+  opacity: 0.95;
+  transform: scale(1.05);
+}
+
+body.bg-light-bg .contact-icon {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.18), rgba(236, 72, 153, 0.18));
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+  color: #0f172a;
+}
+
+body.bg-light-bg .contact-icon::after {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(14, 165, 233, 0.26), rgba(139, 92, 246, 0.25));
+  opacity: 0.5;
+}
+
 .contact-info:hover,
 .contact-form:hover {
   background: rgba(9, 12, 32, 0.08);
@@ -3719,9 +3762,9 @@ padding-right: 0.5rem;
                 class="contact-item flex items-center gap-6 p-4 rounded-xl transition-all duration-300 hover:bg-white/5"
               >
                 <div
-                  class="contact-icon w-12 h-12 rounded-full flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);"
+                  class="social-icon contact-icon w-12 h-12 rounded-full flex items-center justify-center text-white text-lg no-underline transition-all duration-300"
                 >
-                  <i class="fas fa-envelope text-white text-xl"></i>
+                  <i class="fas fa-envelope text-xl;"></i>
                 </div>
                 <div>
                   <h4 class="text-white font-semibold">Email</h4>
@@ -3739,9 +3782,10 @@ padding-right: 0.5rem;
                 class="contact-item flex items-center gap-6 p-4 rounded-xl transition-all duration-300 hover:bg-white/5"
               >
                 <div
-                  class="contact-icon w-12 h-12 rounded-full flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, #0a66c2 0%, #004182 100%); box-shadow: 0 0 20px rgba(10, 102, 194, 0.4);"
+                  class="social-icon contact-icon w-12 h-12 rounded-full flex items-center justify-center text-white text-lg no-underline transition-all duration-300"
                 >
-                  <i class="fab fa-linkedin text-white text-xl"></i>
+                  <i class="fab fa-linkedin text-xl"></i>
+
                 </div>
                 <div>
                   <h4 class="text-white font-semibold">LinkedIn</h4>
@@ -3759,9 +3803,10 @@ padding-right: 0.5rem;
                 class="contact-item flex items-center gap-6 p-4 rounded-xl transition-all duration-300 hover:bg-white/5"
               >
                 <div
-                  class="contact-icon w-12 h-12 rounded-full flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, #333333 0%, #1a1a1a 100%); box-shadow: 0 0 20px rgba(51, 51, 51, 0.4);"
+                  class="social-icon contact-icon w-12 h-12 rounded-full flex items-center justify-center text-white text-lg no-underline transition-all duration-300"
                 >
-                  <i class="fab fa-github text-white text-xl"></i>
+                  <i class="fab fa-github text-xl"></i>
+
                 </div>
                 <div>
                   <h4 class="text-white font-semibold">GitHub</h4>
@@ -3779,9 +3824,11 @@ padding-right: 0.5rem;
                 class="contact-item flex items-center gap-6 p-4 rounded-xl transition-all duration-300 hover:bg-white/5"
               >
                 <div
-                  class="contact-icon w-12 h-12 rounded-full flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);"
+                  class="social-icon contact-icon w-12 h-12 rounded-full flex items-center justify-center text-white text-lg no-underline transition-all duration-300"
                 >
-                  <i class="fab fa-whatsapp text-white text-xl"></i>
+                  
+  <i class="fab fa-whatsapp transition-colors duration-300 hover:text-[#8c89f5]"></i>
+
                 </div>
                 <div>
                   <h4 class="text-white font-semibold">WhatsApp</h4>
