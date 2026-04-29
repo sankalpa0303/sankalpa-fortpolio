@@ -559,46 +559,80 @@ body.bg-light-bg .section-title__text {
   background-clip: text;
 }
 
-/* Profile Picture Animation */
+/* Professional Profile Picture */
 .profile-picture-container {
   position: relative;
   display: inline-block;
-  animation: profileFloat 3s ease-in-out infinite;
-}
-
-@keyframes profileFloat {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
+  border-radius: 9999px;
+  padding: 0.65rem;
+  background: linear-gradient(140deg, rgba(125, 211, 252, 0.5), rgba(129, 140, 248, 0.45), rgba(244, 114, 182, 0.4));
+  box-shadow: 0 24px 50px rgba(2, 6, 23, 0.4);
 }
 
 .profile-picture-container::before {
   content: '';
   position: absolute;
-  top: -15px;
-  left: -15px;
-  right: -15px;
-  bottom: -15px;
-  background: radial-gradient(circle, rgba(108, 99, 255, 0.4) 0%, rgba(78, 205, 196, 0.2) 100%);
+  inset: -12px;
+  background: radial-gradient(circle, rgba(148, 163, 184, 0.22) 0%, rgba(15, 23, 42, 0) 72%);
   border-radius: 50%;
-  animation: glowPulse 2s ease-in-out infinite;
   z-index: -1;
 }
 
 .profile-picture-container::after {
-  content: '';
-  position: absolute;
-  top: -25px;
-  left: -25px;
-  right: -25px;
-  bottom: -25px;
-  border: 2px solid rgba(108, 99, 255, 0.3);
-  border-radius: 50%;
-  animation: rotateBorder 8s linear infinite;
-  z-index: -2;
+  content: none;
+}
+
+.profile-picture-frame {
+  width: clamp(220px, 34vw, 340px);
+  aspect-ratio: 1 / 1;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.hero-content {
+  width: min(1120px, 100%);
+}
+
+.hero-text {
+  align-items: flex-start;
+  text-align: left;
+}
+
+body.bg-light-bg .profile-picture-container {
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+}
+
+body.bg-light-bg .profile-picture-frame {
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.18);
+}
+
+@media (max-width: 1024px) {
+  .hero-content {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .profile-picture-frame {
+    width: min(78vw, 260px);
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-picture-frame {
+    width: min(74vw, 220px);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    line-height: 1.15;
+  }
 }
 
 @keyframes glowPulse {
@@ -747,12 +781,13 @@ body.bg-light-bg .section-title__text {
 .animated-title {
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 0.2rem;
   overflow: hidden;
   min-height: 2.5rem;
+  text-align: left;
 }
 
 .title-part {
@@ -1347,7 +1382,7 @@ padding-right: 0.75rem;
 }
 .profile-picture-container {
 width: 100%;
-max-width: 160px;
+max-width: 280px;
 margin: 0 auto 1.5rem;
 }
 .profile-picture-container::before {
@@ -1441,7 +1476,7 @@ padding-left: 0.5rem;
 padding-right: 0.5rem;
 }
 .profile-picture-container {
-max-width: 140px;
+max-width: 240px;
 margin: 0 auto 1.25rem;
 }
 .profile-picture-container::before {
@@ -1757,7 +1792,7 @@ padding-right: 0.5rem;
 
     <!-- Hero Section -->
     <section
-      class="hero min-h-screen flex items-center justify-center text-center px-5 lg:px-20 relative"
+      class="hero min-h-screen flex items-center justify-center text-center lg:text-left px-5 lg:px-20 relative"
       id="home"
     >
       <div
@@ -1768,22 +1803,11 @@ padding-right: 0.5rem;
       ></div>
 
       <div
-        class="hero-content relative z-10 animate-fadeInUp flex flex-col items-center"
+        class="hero-content relative z-10 animate-fadeInUp flex flex-col-reverse lg:flex-row items-center justify-between gap-10"
       >
-        <div class="profile-picture-container mb-6">
-          <div
-            class="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white/20 shadow-xl backdrop-blur-lg"
-          >
-            <img
-              src="images/pasindu.jpg"
-              alt="Pasindu Sankalpa"
-              class="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-
+        <div class="hero-text flex-1 flex flex-col items-start text-left">
         <h1
-          class="hero-title text-4xl md:text-6xl font-bold mb-4 text-gradient text-center"
+          class="hero-title text-4xl md:text-6xl font-bold mb-4 text-gradient text-left"
         >
           Pasindu Sankalpa Basnayaka
         </h1>
@@ -1791,20 +1815,17 @@ padding-right: 0.5rem;
         <h2
           class="hero-subtitle animated-title text-xl md:text-2xl font-normal text-gray-300 mb-4"
         >
-          <span class="title-part">IT Undergraduate</span>
-          <span class="title-separator">|</span>
           <span class="title-part">BSc in Information Technology</span>
-          <span class="title-separator">|</span>
           <span class="title-part">Specializing in Data Science</span>
           <span class="highlight-overlay"></span>
         </h2>
 
         <div
-          class="hero-description typing-text text-lg md:text-xl text-secondary min-h-10 mb-8 typing-container"
+          class="hero-description typing-text text-lg md:text-xl text-secondary min-h-10 mb-8 typing-container text-left"
           id="typing"
         ></div>
 
-        <div class="hero-buttons flex gap-6 justify-center flex-wrap">
+        <div class="hero-buttons flex gap-6 justify-start flex-wrap">
           <a
             href="#projects"
             class="btn btn-primary btn-glow-sky px-8 py-3 rounded-full font-medium text-white bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 transition-all duration-300 hover:-translate-y-1"
@@ -1832,7 +1853,17 @@ padding-right: 0.5rem;
             Contact Me
           </a>
         </div>
+        </div>
 
+        <div class="profile-picture-container mb-6 lg:mb-0 lg:ml-8">
+          <div class="profile-picture-frame">
+            <img
+              src="images/pasindu.jpeg"
+              alt="Pasindu Sankalpa"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
       </div>
     </section>
 
