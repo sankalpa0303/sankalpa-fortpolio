@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pasindu Sankalpa Basnayaka | IT Undergraduate</title>
+    <title>Pasindu Basnayaka | Portfolio</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%236C63FF;stop-opacity:1' /><stop offset='100%' style='stop-color:%23764BA2;stop-opacity:1' /></linearGradient></defs><rect width='100' height='100' fill='url(%23grad)' rx='20'/><text x='50' y='60' font-size='50' font-weight='bold' text-anchor='middle' fill='white' font-family='Arial'>&lt;/&gt;</text></svg>">
+    <meta name="theme-color" content="#6C63FF">
 
     <!-- Google Fonts -->
     <link
@@ -268,17 +272,107 @@ body.bg-light-bg .theme-toggle:hover {
   border-color: rgba(15, 23, 42, 0.15) !important;
 }
 
-/* Mobile Navigation Panel Responsive Styles */
-.mobile-nav-panel {
-  width: 320px;
-  max-width: min(320px, 80vw);
+/* Modern Mobile Bottom Navigation */
+.mobile-bottom-nav {
+  background: rgba(15, 15, 30, 0.02);
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  animation: slideUpNav 0.5s ease-out;
 }
 
-@media (max-width: 640px) {
-  .mobile-nav-panel {
-    width: 100%;
-    max-width: 100vw;
-    border-radius: 0;
+@keyframes slideUpNav {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.mobile-bottom-nav .mobile-nav-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-bottom-nav .mobile-nav-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-bottom-nav .mobile-nav-btn:hover::before {
+  opacity: 1;
+}
+
+.mobile-bottom-nav .mobile-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  transform: translateY(-4px);
+}
+
+.mobile-bottom-nav .mobile-nav-btn:active {
+  transform: scale(0.95);
+}
+
+.mobile-bottom-nav .mobile-nav-btn i {
+  transition: all 0.3s ease;
+}
+
+/* Light mode styling for mobile navigation */
+body.bg-light-bg .mobile-bottom-nav {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+body.bg-light-bg .mobile-bottom-nav .mobile-nav-btn {
+  color: #0f172a;
+}
+
+body.bg-light-bg .mobile-bottom-nav .mobile-nav-btn span {
+  color: #475569;
+}
+
+body.bg-light-bg .mobile-bottom-nav .mobile-nav-btn:hover span {
+  color: #0f172a;
+}
+
+@media (max-width: 768px) {
+  main,
+  .hero,
+  section {
+    padding-bottom: 120px;
+  }
+  
+  section {
+    scroll-margin-top: 65px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-bottom-nav {
+    padding: 0.5rem 0.25rem 0.5rem 0.25rem;
+  }
+  
+  .mobile-bottom-nav > div {
+    margin: 0 !important;
+  }
+  
+  .mobile-nav-btn {
+    width: 14 !important;
+    height: 14 !important;
+  }
+  
+  .mobile-nav-btn span {
+    font-size: 0.65rem !important;
+  }
+  
+  main,
+  .hero,
+  section {
+    padding-bottom: 100px;
   }
 }
 
@@ -1513,15 +1607,78 @@ padding: 0.65rem 1rem;
 }
 /* Skill Category Filter Styles */
 .skill-category {
-opacity: 1;
-visibility: visible;
-transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: fadeInSkill 0.5s ease-out forwards;
 }
+
+@keyframes fadeInSkill {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .skill-category.hidden {
-display: none !important;
-opacity: 0;
-visibility: hidden;
-pointer-events: none;
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+  animation: none;
+}
+
+/* Filter Button Active State */
+.filter-btn {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s;
+}
+
+.filter-btn:hover::before {
+  left: 100%;
+}
+
+.filter-btn.filter-active {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.1)) !important;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), inset 0 0 20px rgba(59, 130, 246, 0.1);
+  transform: scale(1.05);
+}
+
+/* Light mode filter buttons */
+body.bg-light-bg .filter-btn {
+  background: rgba(15, 23, 42, 0.05);
+  color: #0f172a;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+body.bg-light-bg .filter-btn:hover {
+  background: rgba(15, 23, 42, 0.08);
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
+body.bg-light-bg .filter-btn.filter-active {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.08)) !important;
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2), inset 0 0 20px rgba(59, 130, 246, 0.05);
 }
 /* Prevent any content from causing horizontal scroll */
 .container,
@@ -1577,27 +1734,6 @@ padding-right: 0.5rem;
         <div class="logo text-2xl font-bold text-gradient tracking-wide">
           Pasindu Sankalpa Basnayaka
         </div>
-
-        <div class="nav-socials-mobile">
-          <a
-            href="https://www.linkedin.com/in/pasindu-basnayaka"
-            aria-label="LinkedIn profile"
-          >
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a
-            href="https://github.com/sankalpa0303"
-            aria-label="GitHub profile"
-          >
-            <i class="fab fa-github"></i>
-          </a>
-          <a
-            href="https://wa.me/94759307606"
-            aria-label="WhatsApp contact"
-          >
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
       </div>
 
       <div class="nav-right flex items-center">
@@ -1644,151 +1780,62 @@ padding-right: 0.5rem;
           </a>
         </div>
 
-        <button
-          class="mobile-menu-toggle md:hidden flex flex-col cursor-pointer ml-4 gap-1.5 relative z-50"
-          id="mobileMenuToggle"
-          aria-label="Toggle mobile menu"
-        >
-          <span
-            class="w-7 h-0.5 bg-white rounded-full transition-all duration-300"
-          ></span>
-          <span
-            class="w-7 h-0.5 bg-white rounded-full transition-all duration-300"
-          ></span>
-          <span
-            class="w-7 h-0.5 bg-white rounded-full transition-all duration-300"
-          ></span>
-        </button>
+
       </div>
     </nav>
 
-    <!-- Mobile Navigation Overlay -->
-    <div
-      class="mobile-nav-overlay fixed inset-0 glass z-40 opacity-0 pointer-events-none transition-all duration-300"
-      id="mobileNavOverlay"
+    <!-- Modern Floating Bottom Navigation Bar (Mobile) -->
+    <nav 
+      class="mobile-bottom-nav fixed bottom-0 left-0 right-0 md:hidden z-50 pb-safe"
+      id="mobileBottomNav"
     >
-      <div
-        class="mobile-nav-panel fixed top-0 right-0 h-full w-80 glass transform translate-x-full transition-transform duration-300 ease-out shadow-2xl"
-        id="mobileNavPanel"
-      >
-        <div class="p-6 border-b border-white/10">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div
-                class="w-10 h-10 rounded-xl bg-gradient-1 flex items-center justify-center shadow-md shadow-primary/40"
-              >
-                <i class="fa-solid fa-code text-white text-lg"></i>
-              </div>
-              <div class="text-lg font-bold text-gradient">Menu</div>
-            </div>
-            <button
-              class="mobile-menu-close w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
-              id="mobileMenuClose"
-              aria-label="Close mobile menu"
-            >
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-        </div>
-
-        <nav class="p-6">
-          <ul class="space-y-2">
-            <li>
-              <a
-                href="#home"
-                class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-white hover:bg-white/10 hover:shadow-[0_0_25px_rgba(59,130,246,0.15)] transition-all duration-300 group"
-              >
-                <i class="fas fa-home text-blue-400 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Home</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-white hover:bg-white/10 hover:shadow-[0_0_25px_rgba(34,197,94,0.15)] transition-all duration-300 group"
-              >
-                <i class="fas fa-user text-green-400 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">About</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#extracurricular"
-                class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-white hover:bg-white/10 hover:shadow-[0_0_25px_rgba(234,179,8,0.15)] transition-all duration-300 group"
-              >
-                <i class="fas fa-trophy text-yellow-400 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Achievements</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#education"
-                class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-white hover:bg-white/10 hover:shadow-[0_0_25px_rgba(168,85,247,0.15)] transition-all duration-300 group"
-              >
-                <i class="fas fa-graduation-cap text-purple-400 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Education</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#skills"
-                class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-white hover:bg-white/10 hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] transition-all duration-300 group"
-              >
-                <i class="fas fa-chart-line text-cyan-400 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Skills</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#projects"
-                class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-white hover:bg-white/10 hover:shadow-[0_0_25px_rgba(251,146,60,0.15)] transition-all duration-300 group"
-              >
-                <i class="fas fa-folder text-orange-400 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Projects</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-white hover:bg-white/10 hover:shadow-[0_0_25px_rgba(239,68,68,0.15)] transition-all duration-300 group"
-              >
-                <i class="fas fa-envelope text-red-400 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Contact</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-white/10">
-          <div class="flex justify-center gap-4">
-            <a
-              href="https://www.linkedin.com/in/pasindu-basnayaka"
-              target="_blank"
-              class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
-              aria-label="LinkedIn"
-            >
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a
-              href="https://github.com/sankalpa0303"
-              target="_blank"
-              class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
-              aria-label="GitHub"
-            >
-              <i class="fab fa-github"></i>
-            </a>
-            <a
-              href="https://wa.me/94759307606"
-              target="_blank"
-              class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
-              aria-label="WhatsApp"
-            >
-              <i class="fab fa-whatsapp"></i>
-            </a>
-          </div>
-        </div>
+      <div class="flex items-center justify-around px-2 py-3 mx-2 mb-2 bg-dark-bg/70 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50">
+        <a 
+          href="#home" 
+          class="mobile-nav-btn group flex flex-col items-center justify-center w-16 h-16 rounded-xl transition-all duration-300 hover:bg-white/10"
+          title="Home"
+        >
+          <i class="fas fa-home text-xl text-blue-400 group-hover:scale-110 transition-transform"></i>
+          <span class="text-xs font-medium mt-1 text-gray-300 group-hover:text-white">Home</span>
+        </a>
+        
+        <a 
+          href="#about" 
+          class="mobile-nav-btn group flex flex-col items-center justify-center w-16 h-16 rounded-xl transition-all duration-300 hover:bg-white/10"
+          title="About"
+        >
+          <i class="fas fa-user text-xl text-green-400 group-hover:scale-110 transition-transform"></i>
+          <span class="text-xs font-medium mt-1 text-gray-300 group-hover:text-white">About</span>
+        </a>
+        
+        <a 
+          href="#skills" 
+          class="mobile-nav-btn group flex flex-col items-center justify-center w-16 h-16 rounded-xl transition-all duration-300 hover:bg-white/10"
+          title="Skills"
+        >
+          <i class="fas fa-chart-line text-xl text-cyan-400 group-hover:scale-110 transition-transform"></i>
+          <span class="text-xs font-medium mt-1 text-gray-300 group-hover:text-white">Skills</span>
+        </a>
+        
+        <a 
+          href="#projects" 
+          class="mobile-nav-btn group flex flex-col items-center justify-center w-16 h-16 rounded-xl transition-all duration-300 hover:bg-white/10"
+          title="Projects"
+        >
+          <i class="fas fa-folder text-xl text-orange-400 group-hover:scale-110 transition-transform"></i>
+          <span class="text-xs font-medium mt-1 text-gray-300 group-hover:text-white">Projects</span>
+        </a>
+        
+        <a 
+          href="#contact" 
+          class="mobile-nav-btn group flex flex-col items-center justify-center w-16 h-16 rounded-xl transition-all duration-300 hover:bg-white/10"
+          title="Contact"
+        >
+          <i class="fas fa-envelope text-xl text-red-400 group-hover:scale-110 transition-transform"></i>
+          <span class="text-xs font-medium mt-1 text-gray-300 group-hover:text-white">Contact</span>
+        </a>
       </div>
-    </div>
+    </nav>
 
     <!-- Hero Section -->
     <section
@@ -2439,22 +2486,22 @@ padding-right: 0.5rem;
 
       <!-- Filter Buttons -->
       <div class="flex flex-wrap gap-3 mb-8 justify-center">
-        <button class="filter-btn filter-active px-6 py-2 rounded-full bg-blue-500/20 text-blue-300 font-medium transition-all duration-300 hover:bg-blue-500/30" data-filter="all">
+        <button class="filter-btn filter-active px-6 py-2 rounded-full bg-blue-500/20 text-blue-300 font-medium transition-all duration-300 hover:bg-blue-500/30 border border-blue-500/30" data-filter="all" type="button">
           <i class="fas fa-th mr-2"></i>All Skills
         </button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20" data-filter="data-science">
+        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20 border border-white/10" data-filter="data-science" type="button">
           <i class="fas fa-chart-line mr-2"></i>Data Science
         </button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20" data-filter="tools-design">
+        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20 border border-white/10" data-filter="tools-design" type="button">
           <i class="fas fa-tools mr-2"></i>Tools & Design
         </button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20" data-filter="web-dev">
+        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20 border border-white/10" data-filter="web-dev" type="button">
           <i class="fas fa-code mr-2"></i>Web Development
         </button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20" data-filter="mobile-dev">
+        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20 border border-white/10" data-filter="mobile-dev" type="button">
           <i class="fas fa-mobile-alt mr-2"></i>Mobile Development
         </button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20" data-filter="soft-skills">
+        <button class="filter-btn px-6 py-2 rounded-full bg-white/10 text-white font-medium transition-all duration-300 hover:bg-white/20 border border-white/10" data-filter="soft-skills" type="button">
           <i class="fas fa-heart mr-2"></i>Soft Skills
         </button>
       </div>
@@ -2900,7 +2947,7 @@ padding-right: 0.5rem;
           <h3 class="text-xl font-semibold text-white">Soft Skills</h3>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- Communication -->
           <div class="flex flex-col items-center">
             <svg class="w-24 h-24 skill-icon" viewBox="0 0 100 100">
@@ -4390,46 +4437,18 @@ padding-right: 0.5rem;
         }
       });
 
-      // Mobile Navigation Overlay
-      const mobileMenuToggle = document.getElementById("mobileMenuToggle");
-      const mobileMenuClose = document.getElementById("mobileMenuClose");
-      const mobileNavOverlay = document.getElementById("mobileNavOverlay");
-      const mobileNavPanel = document.getElementById("mobileNavPanel");
-
-      function openMobileNav() {
-        mobileNavOverlay.classList.remove("opacity-0", "pointer-events-none");
-        mobileNavOverlay.classList.add("opacity-100");
-        mobileNavPanel.classList.remove("translate-x-full");
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeMobileNav() {
-        mobileNavOverlay.classList.add("opacity-0", "pointer-events-none");
-        mobileNavOverlay.classList.remove("opacity-100");
-        mobileNavPanel.classList.add("translate-x-full");
-        document.body.style.overflow = "";
-      }
-
-      mobileMenuToggle.addEventListener("click", openMobileNav);
-      mobileMenuClose.addEventListener("click", closeMobileNav);
-
-      // Close mobile nav when clicking on overlay
-      mobileNavOverlay.addEventListener("click", (e) => {
-        if (e.target === mobileNavOverlay) {
-          closeMobileNav();
-        }
-      });
-
-      // Close mobile nav when clicking on nav links
-      document.querySelectorAll(".mobile-nav-link").forEach((link) => {
-        link.addEventListener("click", closeMobileNav);
-      });
-
-      // Close mobile nav on escape key
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && !mobileNavOverlay.classList.contains("pointer-events-none")) {
-          closeMobileNav();
-        }
+      // Modern Bottom Navigation for Mobile
+      const mobileNavButtons = document.querySelectorAll(".mobile-nav-btn");
+      mobileNavButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          // Add smooth scroll behavior
+          e.preventDefault();
+          const href = btn.getAttribute("href");
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
       });
 
       // Typing Animation
@@ -4639,38 +4658,80 @@ padding-right: 0.5rem;
         anchor.setAttribute("rel", "noopener noreferrer");
       });
 
-      // Skills Filter Functionality
-      document.addEventListener('DOMContentLoaded', function() {
+      // Skills Filter Functionality - IMPROVED
+      function initializeSkillsFilter() {
         const filterBtns = document.querySelectorAll('.filter-btn');
         const skillCategories = document.querySelectorAll('.skill-category');
+
+        if (filterBtns.length === 0 || skillCategories.length === 0) {
+          console.warn('Filter buttons or skill categories not found');
+          return;
+        }
 
         filterBtns.forEach(btn => {
           btn.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
+            
             const filterValue = this.getAttribute('data-filter');
+            console.log('Filter clicked:', filterValue);
             
             // Update active button styling
             filterBtns.forEach(b => {
-              b.classList.remove('filter-active', 'bg-blue-500/20', 'text-blue-300');
+              b.classList.remove('filter-active', 'bg-blue-500/20', 'text-blue-300', 'bg-blue-500/30');
               b.classList.add('bg-white/10', 'text-white');
+              b.style.boxShadow = 'none';
+              b.style.transform = 'scale(1)';
             });
+            
+            // Add active styling to clicked button
             this.classList.remove('bg-white/10', 'text-white');
             this.classList.add('filter-active', 'bg-blue-500/20', 'text-blue-300');
 
-            // Filter skill categories using CSS classes
+            // Filter skill categories
+            let visibleCount = 0;
             skillCategories.forEach(category => {
               const categoryName = category.getAttribute('data-category');
+              
               if (filterValue === 'all' || categoryName === filterValue) {
+                // Show category
                 category.classList.remove('hidden');
-                category.style.display = '';
+                if (category.style.display === 'none') {
+                  category.style.display = '';
+                }
+                visibleCount++;
               } else {
+                // Hide category
                 category.classList.add('hidden');
                 category.style.display = 'none';
               }
             });
+            
+            console.log('Visible categories:', visibleCount);
+          });
+
+          // Add keyboard support
+          btn.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.click();
+            }
           });
         });
-      });
+
+        // Trigger initial "all" filter
+        const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+        if (allBtn) {
+          allBtn.click();
+        }
+      }
+
+      // Initialize on page load
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeSkillsFilter);
+      } else {
+        initializeSkillsFilter();
+      }
 
       // Console Messages
       console.log(
